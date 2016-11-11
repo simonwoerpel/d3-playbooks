@@ -1,12 +1,12 @@
 import format from 'string-template'
 import makeResponsive from '../utils/tags/setup_responsive_tag.js'
 
-<riot-searchbox class="simple-charts__searchbox" style={ position }>
+<riot-searchbox class="d3-playbooks__searchbox" style={ position }>
 
   <label>{ opts.description }</label>
   <input type="text" oninput={ search } />
-  <div if={ failMsg } class="simple-charts__searchbox__fail-message">{ failMsg }</div>
-  <ul if={ results.length > 0 } class="simple-charts__searchbox__result-list">
+  <div if={ failMsg } class="d3-playbooks__searchbox__fail-message">{ failMsg }</div>
+  <ul if={ results.length > 0 } class="d3-playbooks__searchbox__result-list">
     <li each={ results }
       onclick={ handleClick }
       onmouseover={ onMouseOver }>

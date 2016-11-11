@@ -6,7 +6,7 @@ const DEFAULTS = Immutable.Map({
   height: 500,
   wrapperWidth: 800,
   wrapperHeight: 500,
-  wrapperClass: 'simple-charts',
+  wrapperClass: 'd3-playbooks',
   margin: Immutable.Map({
     top: 20,
     right: 20,

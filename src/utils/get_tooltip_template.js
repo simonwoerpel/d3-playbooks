@@ -1,7 +1,7 @@
 import template from 'string-template'
 
-const TOOLTIP_HEAD = '<div class="simple-charts__tooltip__head">{headTempl}</div>'
-const TOOLTIP_BODY = '<div class="simple-charts__tooltip__data">{bodyTempl}</div>'
+const TOOLTIP_HEAD = '<div class="d3-playbooks__tooltip__head">{headTempl}</div>'
+const TOOLTIP_BODY = '<div class="d3-playbooks__tooltip__data">{bodyTempl}</div>'
 const DEFAULT_TEMPLATE = '<dl class="table"><dt>{xCol}</dt><dd>{xVar}</dd><dt>{yCol}</dt><dd>{yVar}</dd></dl>'
 
 const varTmpl = (_var) => {
