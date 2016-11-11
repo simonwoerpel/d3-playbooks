@@ -15,7 +15,7 @@ export default function({
   yCol
 }) {
   let {headTempl, bodyTempl} = tooltip
-  if (!headTempl && !labelCol) {
+  if (!headTempl && !bodyTempl && !labelCol) {
     return template(TOOLTIP_BODY, {
       bodyTempl: template(DEFAULT_TEMPLATE, {
         xCol: xCol,
