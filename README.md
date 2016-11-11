@@ -1,6 +1,8 @@
-# d3-riot-charts
+# d3-playbooks
 
-Kind of "request-driven" developement of a simple charts library as sort of a wrapper around `d3` (v4), extended with `riotjs` for use with reusable correctiv visualizations
+Kind of "request-driven" developement of a simple charts library as sort of a wrapper around `d3` (v4), extended with `riotjs`, a fork from [`d3-riot-charts`](https://github.com/correctiv/d3-riot-charts) which was intended for reusable [correctiv.org](https://correctiv.org) visualizations
+
+## TODO: this library is under heavy refactoring. don't use this right now ;-)
 
 Although this library has some pre-defined chart types, like `nvd3`, that can be rendered "out of the box", its main purpose is to offer a little framework to build custom charts. The main concept threfore are `playbooks`, which define the tasks and tasks order necessary to render a specific chart. The library offers default tasks for different chart types which can be overriden with custom tasks on a per-initialization level. Examples for this tasks are `getXDomain`, `renderYLabel` or whatever (see "playbooks"-section see below).
 

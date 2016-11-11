@@ -1,5 +1,5 @@
 {
-  "name": "d3-riot-charts",
+  "name": "d3-playbooks",
   "version": "0.0.1",
   "description": "A simple wrapper around d3v4, extended with some riotjs stuff",
   "main": "webpack.config.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/correctiv/d3-riot-charts.git"
+    "url": "https://github.com/simonwoerpel/d3-playbooks"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
