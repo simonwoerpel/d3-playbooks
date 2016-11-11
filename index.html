@@ -56,7 +56,17 @@ renderChart({
     kind: "multiLineChart",
     elementId: "example-multiline",
     dataUrl: 'data/multiline.csv',
+    legend: true,
     yCols: ['y1', 'y2', 'y3']
+});
+
+renderChart({
+    kind: "multiTimeLineChart",
+    elementId: "multitimeline-simple",
+    dataUrl: 'data/multitimeline.csv',
+    yCols: ['count_clinton', 'count_trump'],
+    legend: true,
+    timeFormat: "%Y-%m-%d %H:%M:%S"
 });
   </script>
 </body>
