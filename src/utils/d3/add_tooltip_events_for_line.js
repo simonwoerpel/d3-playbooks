@@ -19,9 +19,6 @@ export default function({
       .attr('class', 'focus')
       .style('display', 'none')
     focus.append('circle')
-      .attr('r', 4.5)
-      .style('fill', 'steelblue')
-      // .style('stroke', 'steelblue')
 
   let overlay = svg.append('rect')
     .attr('class', 'overlay')
