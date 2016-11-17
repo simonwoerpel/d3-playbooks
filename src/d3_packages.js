@@ -4,7 +4,7 @@ export {
   axisTop,
   axisBottom,
   bisector,
-  curveBasis,
+  curveNatural,
   extent,
   invert,
   max,

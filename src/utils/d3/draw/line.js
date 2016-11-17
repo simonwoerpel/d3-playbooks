@@ -1,4 +1,4 @@
-import {line, curveBasis} from '../../../d3_packages.js'
+import {line, curveNatural} from '../../../d3_packages.js'
 
 export default function({
   curve,
@@ -19,7 +19,7 @@ export default function({
     })
 
   if (curve) {
-    _line.curve(curveBasis)
+    _line.curve(curveNatural)
   }
 
   return svg.append('path')
