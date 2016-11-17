@@ -28,6 +28,8 @@ const DEFAULTS = Immutable.Map({
   yTicks: 10,
   curve: false,
   color: schemeCategory10,
+  barMargin: 0,
+  barWidth: false,
   timeFormat: false,
   filter: false,
   tooltip: false,
