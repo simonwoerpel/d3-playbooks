@@ -1,6 +1,6 @@
 export default (chart) => {
   // setup size ratio, preserve original values
-  let {
+  const {
     width,
     height,
     wrapperWidth,
@@ -8,7 +8,7 @@ export default (chart) => {
     margin
   } = chart
 
-  let {
+  const {
     top,
     right,
     bottom,
@@ -22,14 +22,14 @@ export default (chart) => {
 
   chart._svgWidthRatio = (width + left + right) / wrapperWidth
 
-  let wFix = chart.margin.left + chart.margin.right
+  const wFix = chart.margin.left + chart.margin.right
   chart._getSvgWidth = (wrapperWidth) => {
     return parseInt(wrapperWidth * chart._svgWidthRatio) - wFix
   }
 
   chart._svgHeightRatio = (height + top + bottom) / wrapperHeight
 
-  let hFix = chart.margin.top + chart.margin.bottom
+  const hFix = chart.margin.top + chart.margin.bottom
   chart._getSvgHeight = (wrapperHeight) => {
     return parseInt(wrapperHeight * chart._svgHeightRatio) - hFix
   }

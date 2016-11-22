@@ -11,14 +11,16 @@ export default ({
   elementId,
   wrapperClass
 }) => {
-  let element = select('#'+elementId)
-  if (element.empty()) {
-    element = select('body')
+  let parent = select('#'+elementId)
+  if (parent.empty()) {
+    parent = select('body')
       .append('div')
       .attr('id', elementId)
   }
 
-  element.classed(wrapperClass, true)
-
-  return element
+  // return a child element of the actual element to compute
+  // `clientWidth` properly regardless of parent element paddings
+  return parent
+    .append('div').classed(wrapperClass+'-wrapper', true)
+    .append('div').classed(wrapperClass, true)
 }

@@ -3,18 +3,15 @@ import {line, curveNatural} from '../../../d3_packages.js'
 export default function({
   curve,
   multiData,
-  xCol,
-  yCols,
   xScale,
   yScale,
   svg,
-  getColor,
-  yDomain
+  getColor
 }) {
 
-  let {xValues, yValues} = multiData
+  const {xValues, yValues} = multiData
 
-  let _line = line()
+  const _line = line()
     .x((d, i) => {
       return xScale(xValues[i])
     })

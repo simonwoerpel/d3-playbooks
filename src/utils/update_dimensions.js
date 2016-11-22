@@ -2,7 +2,7 @@
 // return whether to perform resize or not (boolean)
 // @param {object} chart - chart instance from `chart.js`
 export default function(chart) {
-  const width = chart.element.node().parentNode.offsetWidth
+  const width = chart.element.node().parentNode.clientWidth
 
   // wrapper is smaller than origin width
   if (chart._originWrapperWidth > width) {

@@ -8,7 +8,7 @@ export default function({
   margin,
   responsiveSvg
 }){
-  let svg = element.append('svg')
+  const svg = element.append('svg')
 
   if (responsiveSvg) {
     svg
