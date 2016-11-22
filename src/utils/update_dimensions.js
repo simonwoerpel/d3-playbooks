@@ -1,10 +1,8 @@
-import getWidth from './get_window_width.js'
-
 // compute chart dimensions (for use on resize)
 // return whether to perform resize or not (boolean)
 // @param {object} chart - chart instance from `chart.js`
 export default function(chart) {
-  let width = getWidth()
+  const width = chart.element.node().parentNode.offsetWidth
 
   // wrapper is smaller than origin width
   if (chart._originWrapperWidth > width) {

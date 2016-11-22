@@ -112,6 +112,7 @@ export default class {
   }
 
   _init() {
+    this.element = getChartElement(this)
 
     fixDimensions(this)
 
@@ -119,7 +120,6 @@ export default class {
       this._setupResponsiveness()
     }
 
-    this.element = getChartElement(this)
     updateElement(this)
     let {svgEl, svg} = initSvg(this)
     this.svg = svg
