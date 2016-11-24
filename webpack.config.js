@@ -13,18 +13,32 @@ module.exports = {
   },
   output: {
     path: __dirname + '/dist/',
-    filename: 'd3-riot-charts.min.js'
+    filename: 'd3-playbooks.min.js'
   },
   devtool: 'eval',
   debug: true,
   module: {
-    preLoaders: [
-      { test: /\.tag$/, exclude: /node_modules/, include: /src/, loader: 'riotjs-loader', query: { type: 'none'} }
-    ],
-    loaders: [
-      { test: /\.js|\.tag$/, exclude: /node_modules/, include: /src/, loader: 'babel-loader', query: { presets: 'es2015'} },
-      { test: /\.less/, loader: 'style-loader!css-loader!less-loader!postcss-loader' }
-    ]
+    preLoaders: [{
+      test: /\.tag$/,
+      exclude: /node_modules/,
+      include: /src/,
+      loader: 'riotjs-loader',
+      query: {
+        type: 'none'
+      }
+    }],
+    loaders: [{
+      test: /\.js|\.tag$/,
+      exclude: /node_modules/,
+      include: /src/,
+      loader: 'babel-loader',
+      query: {
+        presets: 'es2015'
+      }
+    }, {
+      test: /\.less/,
+      loader: 'style-loader!css-loader!less-loader!postcss-loader'
+    }]
   },
   // have riot global
   plugins: [
