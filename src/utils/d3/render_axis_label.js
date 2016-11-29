@@ -29,5 +29,6 @@ export default function({
         .attr('y', -6)
         .attr('x', width)
     }
+  return _label
   }
 }

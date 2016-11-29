@@ -1,13 +1,12 @@
 // init svg the first time
-// @return svgEl as wrapper svg element (use for resizing if responsive)
-//    and svg (which is the svgEl with a g appended, as a d3 convention)
-export default function({
+// @return svg as wrapper svg element (use for resizing if responsive)
+export default ({
   element,
   width,
   height,
   margin,
   responsiveSvg
-}){
+}) => {
   let svg = element.append('svg')
 
   if (responsiveSvg) {
@@ -23,10 +22,5 @@ export default function({
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
   }
-  return {
-    svgEl: svg,
-    svg: svg
-      .append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-  }
+  return svg
 }

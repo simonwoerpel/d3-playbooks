@@ -7,7 +7,7 @@ export default function({
   yCol,
   xScale,
   yScale,
-  svg,
+  g,
   getColor
 }) {
   let _line = line()
@@ -22,7 +22,7 @@ export default function({
     _line.curve(curveNatural)
   }
 
-  return svg.append('path')
+  return g.append('path')
       .datum(data)
       .attr('class', 'line')
       .attr('d', _line)

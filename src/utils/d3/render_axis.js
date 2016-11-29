@@ -1,5 +1,5 @@
 export default function({
-  svg,
+  g,
   xAxis,
   yAxis,
   showXAxis,
@@ -21,10 +21,10 @@ export default function({
       let tickRatio = _y ? yTicksRatio : xTicksRatio
       let tickVal = _y ? height : width
       let ticks = Math.floor(tickVal*tickRatio)
-      Axis.ticks(ticks)
+      // Axis.ticks(ticks) FIXME
     }
 
-    let axis = svg.append('g')
+    let axis = g.append('g')
       .attr('class', this.cssClasses)
       .call(Axis)
 

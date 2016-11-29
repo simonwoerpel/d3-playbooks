@@ -5,14 +5,14 @@ export default function({
   yCol,
   xScale,
   yScale,
-  svg,
+  g,
   getColor,
   getSize
 }) {
-  return svg.selectAll('.dot')
+  return g.selectAll('.dot')
     .data(data)
     .enter().append('circle')
-    .attr('class', this.cssClasses || 'dot')
+    .attr('class', 'dot')
     .attr('r', d => {
       return getSize(d[sizeCol])
     })

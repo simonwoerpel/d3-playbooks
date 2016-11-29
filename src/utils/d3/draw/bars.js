@@ -5,7 +5,7 @@ export default function({
   yCol,
   xScale,
   yScale,
-  svg,
+  g,
   getColor,
   barMargin,
   barWidth
@@ -14,10 +14,10 @@ export default function({
   const bandWith = barWidth ? xScale.bandwidth() * barWidth : xScale.bandwidth() - barMargin
   // FIXME make bars real center
 
-  return svg.selectAll('.bar')
+  return g.selectAll('.bar')
     .data(data)
     .enter().append('rect')
-    .attr('class', this.cssClasses || 'bar')
+    .attr('class', 'bar')
     .attr('x', d => {
       return xScale(d[xCol]) + barMargin  // FIXME
     })

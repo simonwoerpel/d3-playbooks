@@ -20,5 +20,6 @@ export default ({
     .style('width', wrapperWidth)
     .style('height', wrapperHeight)
 
-  updateBreakpointClasses({element, breakpoint})
+  // FIXME
+  // updateBreakpointClasses({element, breakpoint})
 }

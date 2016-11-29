@@ -1,26 +1,15 @@
-import getData from './loader.js'
+import setupPlaybook from './playbooks/generate.js'
+import playbook from './playbook.js'
+
 import transformMulti from './utils/data/transform_multi.js'
-import fixDimensions from './utils/fix_dimensions.js'
-import initSvg from './utils/d3/init_svg.js'
-import addSvgEvents from './utils/d3/add_svg_events.js'
 import updateSvg from './utils/d3/update_svg.js'
 import updateElement from './utils/update_element.js'
-import getChartElement from './utils/get_chart_element.js'
 import {PLAYBOOKS} from './playbooks/charts.js'
 import Settings from './playbooks/defaults.js'
 import setUpResponsiveness from './utils/setup_responsiveness.js'
 import updateBreakpoints from './utils/update_breakpoints.js'
 import getBreakpoints from './utils/get_breakpoints.js'
 import updateDimensions from './utils/update_dimensions.js'
-import getTooltipTemplate from './utils/get_tooltip_template.js'
-import mountRiotTooltip from './utils/mount_riot_tooltip.js'
-import getSearchFunc from './utils/get_search_func.js'
-import mountRiotSearchbox from './utils/mount_riot_searchbox.js'
-import getLegendItems from './utils/get_legend_items.js'
-import mountRiotLegend from './utils/mount_riot_legend.js'
-import mountRiotAnnotation from './utils/mount_riot_annotation.js'
-import orderElements from './utils/order_elements.js'
-import ChartStore from './stores/chart_store.js'
 
 /**
  * available opts:
@@ -51,33 +40,22 @@ import ChartStore from './stores/chart_store.js'
  * @param {object, function, array, string} color - a color function, mapping, array or a single string value
  * @param {function} filter - a filter function that will be applied to each row while loading data
  * @param {string} sizeCol - csv column for calculating dot size (for `scatterChart`)
- * @param {object} or {boolean} tooltip - `headTempl` or `labelCol` and optional `bodyTempl` for tooltip rendering
- * @param {object} or {boolean} search - search settings, see examples
- * @param {object} or {boolean} legend - legend settings, see examples
- * @param {boolean} clearSvg - whether to add `clear` event for clicking on free svg space or not
  * @param {function} drawExtra - function or array of functions to apply on the svg to draw some extra stuff
  * @param {array} sizeRange - for scatters: smallest and biggest circle radius
  * @param {number} size - for scatters: fixed circle radius
- * @param {object} playbook - overrides for playbook for this chart
  *
  **/
 export default class {
 
   constructor(opts) {
     opts = Settings(opts)
+
     for (let prop in opts) {
       this[prop] = opts[prop]
     }
 
-    // start getting async data as soon as possible
-    this.data = getData(this)
-
-    // flux like store implemention but instanciated for this chart
-    this.control = new ChartStore()
-
     this._setupPlaybook()
-
-    this._init()
+    this.init()
   }
 
   render() {
@@ -88,15 +66,13 @@ export default class {
       if (this.kind.startsWith('multi')) {
         this.multiData = transformMulti(this)
       }
-
-      this.playbook.run(this)
-      this.search ? this._setupSearch() : null
-      this.legend ? this._initLegend() : null
-      this.control.trigger(riot.EVT.chartDrawed, this.drawedSelection)
-
-      // sort elements for correct display in smaller windows
-      orderElements(this)
+      this._render()
     })
+  }
+
+  _render() {
+    this.setup()
+    this.draw()
   }
 
   resize() {
@@ -105,41 +81,13 @@ export default class {
       updateBreakpoints(this)
       updateElement(this)
       updateSvg(this)
-      this.control.trigger(riot.EVT.updatePositions, this.breakpoint)
       this.playbook.reRender(this)
-      this.control.trigger(riot.EVT.chartDrawed, this.drawedSelection)
     }
-  }
-
-  _init() {
-    this.element = getChartElement(this)
-
-    fixDimensions(this)
-
-    if (this.responsive) {
-      this._setupResponsiveness()
-    }
-
-    updateElement(this)
-    let {svgEl, svg} = initSvg(this)
-    this.svg = svg
-    this.svgEl = svgEl
-
-    if (this.annotation) {
-      this._initAnnotation()
-    }
-
-    if (this.tooltip) {
-      this._initTooltip()
-    }
-
-    if (this.clearSvg) {
-      addSvgEvents(this)
-    }
-
   }
 
   _setupResponsiveness() {
+    // this.xTicksRatio = this.xTicks / this.width
+    // this.yTicksRatio = this.yTicks / this.height
     setUpResponsiveness(this)
 
     // initial conversion of breakpoint object into array
@@ -154,38 +102,10 @@ export default class {
   }
 
   _setupPlaybook() {
-    this.playbook = PLAYBOOKS[this.kind].merge(this.playbook)
-  }
-
-  _initTooltip() {
-    // FIXME
-    if (typeof(this.tooltip) === 'boolean') {
-      this.tooltip = {}
-    }
-    this.tooltip.template = getTooltipTemplate(this)
-    this.elements.tooltip = mountRiotTooltip(this)
-  }
-
-  _initLegend() {
-    // FIXME
-    if (typeof(this.legend) === 'boolean') {
-      this.legend = {}
-    }
-    this.legend.legendItems = getLegendItems(this)
-    this.elements.legend = mountRiotLegend(this)
-  }
-
-  _initAnnotation() {
-    this.elements.annotation = mountRiotAnnotation(this)
-  }
-
-  _setupSearch() {
-    this.search.doSearch = getSearchFunc(this)
-    this.elements.searchbox = mountRiotSearchbox(this)
-  }
-
-  _setupTicks() {
-    this.xTicksRatio = this.xTicks / this.width
-    this.yTicksRatio = this.yTicks / this.height
+    setupPlaybook({
+      chart: this,
+      playbook: playbook,
+      playbookFuncs: PLAYBOOKS[this.kind]
+    })
   }
 }
