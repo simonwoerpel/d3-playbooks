@@ -13,22 +13,13 @@ module.exports = {
   },
   output: {
     path: __dirname + '/dist/',
-    filename: 'd3-playbooks.min.js'
+    filename: 'd3-playbooks-base.min.js'
   },
   devtool: 'eval',
   debug: true,
   module: {
-    preLoaders: [{
-      test: /\.tag$/,
-      exclude: /node_modules/,
-      include: /src/,
-      loader: 'riotjs-loader',
-      query: {
-        type: 'none'
-      }
-    }],
     loaders: [{
-      test: /\.js|\.tag$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       include: /src/,
       loader: 'babel-loader',
@@ -40,12 +31,6 @@ module.exports = {
       loader: 'style-loader!css-loader!less-loader!postcss-loader'
     }]
   },
-  // have riot global
-  plugins: [
-    new webpack.ProvidePlugin({
-      riot: 'riot'
-    })
-  ],
   // postcss: [cssimport, cssnested, customProperties, autoprefixer, csswring],
   devServer: {
     contentBase: './',
