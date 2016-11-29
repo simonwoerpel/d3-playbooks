@@ -5,9 +5,10 @@ export default ({
   width,
   height,
   margin,
-  responsiveSvg
+  responsiveSvg,
+  cssNamespace
 }) => {
-  let svg = element.append('svg')
+  const svg = element.append('svg')
 
   if (responsiveSvg) {
     svg
@@ -21,6 +22,7 @@ export default ({
     svg
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
+      .attr('class', cssNamespace + '__svg')
   }
   return svg
 }

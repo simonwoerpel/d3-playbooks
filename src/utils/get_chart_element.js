@@ -9,7 +9,7 @@ import {select} from '../d3_packages.js'
  **/
 export default ({
   elementId,
-  wrapperClass
+  cssNamespace
 }) => {
   let element = select('#'+elementId)
   if (element.empty()) {
@@ -18,7 +18,6 @@ export default ({
       .attr('id', elementId)
   }
 
-  element.classed(wrapperClass, true)
-
-  return element
+  return element.append('div')
+    .attr('class', cssNamespace + ' ' + cssNamespace + '__wrapper')
 }

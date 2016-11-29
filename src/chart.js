@@ -25,7 +25,7 @@ import updateDimensions from './utils/update_dimensions.js'
  * @param {number} height - overall height of chart svg
  * @param {number} wrapperWidth - width of wrapper element, default at least `width`
  * @param {number} wrapperHeight - height of wrapper element, default at least `height`
- * @param {string} wrapperClass - css class for wrapper element
+ * @param {string} cssNamespace - css class namespace, default 'd3-playbooks#
  * @param {object} margin - margins for svg chart element
  * @param {string} xCol - csv column for x-Axis
  * @param {string} yCol - csv column for y-Axis
