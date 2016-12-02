@@ -1,13 +1,11 @@
-import Immutable from 'immutable'
+import {Map} from 'immutable'
 import {schemeCategory10} from '../d3_packages.js'
 
-const DEFAULTS = Immutable.Map({
+const DEFAULTS = Map({
   width: 800,
   height: 500,
-  wrapperWidth: 800,
-  wrapperHeight: 500,
   cssNamespace: 'd3-playbooks',
-  margin: Immutable.Map({
+  margin: Map({
     top: 20,
     right: 20,
     bottom: 30,
@@ -32,24 +30,14 @@ const DEFAULTS = Immutable.Map({
   barWidth: false,
   timeFormat: false,
   filter: false,
-  tooltip: false,
-  search: false,
-  legend: false,
-  annotation: false,
-  clearSvg: true,
-  drawExtra: false,
+  drawExtra: c => undefined,
   sizeRange: [3, 8],
   size: 6,
-  playbook: Immutable.Map({}),
-  breakpoints: Immutable.Map({
+  breakpoints: Map({
     small: 480,
     medium: 768,
     large: 1280
   }),
-  elements: Immutable.Map({}),
-  elementsOrder: ['searchbox', 'legend', '__svg__',  'annotation', 'tooltip']
 })
 
-export default opts => {
-  return DEFAULTS.merge(opts).toJS()
-}
+export default opts => DEFAULTS.merge(opts).toJS()

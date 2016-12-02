@@ -4,27 +4,44 @@ export default _({
   init: _({
     data: 'getData',
     element: 'getChartElement',
-    _dimensions: 'fixDimensions',
-    _update: 'updateElement',
+    _responsive: 'setUpResponsiveness',
+    _updateDimensions: 'updateDimensions',
+    breakpoints: 'getBreakpoints',
+    _updateBreakpoints: 'updateBreakpoints',
+    _updateBreakpointClasses: 'updateBreakpointClasses',
     svg: 'initSvg',
     g: 'initG'
   }),
   setup: _({
-    getColor: 'getColor',
-    getSize: 'getSize',
+    getColor: 'getColorFunc',
+    getSize: 'getSizeFunc',
     xDomain: 'getXDomain',
-    yDomain: 'getYDomain',
+    yDomain: 'getYDomain'
+  }),
+  beforeDraw: _({
     xScale: 'getXScale',
     yScale: 'getYScale',
     xAxis: 'getXAxis',
     yAxis: 'getYAxis'
   }),
   draw: _({
+    drawedSelection: 'drawData',
     renderedXAxis: 'renderXAxis',
     renderedYAxis: 'renderYAxis',
     renderedXLabel: 'renderXLabel',
     renderedYLabel: 'renderYLabel',
-    drawedSelection: 'drawData',
     extraDrawedSelections: 'drawExtra'
-  })
+  }),
+  render: [
+    'setup',
+    'beforeDraw',
+    'draw'
+  ],
+  resize: [
+    'updateBreakpoints',
+    'updateBreakpointClasses',
+    'updateSvg',
+    'beforeDraw',
+    'draw'
+  ]
 })

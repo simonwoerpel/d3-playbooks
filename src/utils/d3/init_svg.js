@@ -3,8 +3,8 @@
 export default ({
   element,
   width,
-  height,
-  margin,
+  containerWidth,
+  containerHeight,
   responsiveSvg,
   cssNamespace
 }) => {
@@ -14,14 +14,14 @@ export default ({
     svg
       //responsive SVG needs these 2 attributes and no width and height attr
       .attr('preserveAspectRatio', 'xMinYMin meet')
-      .attr('viewBox', '0 0 ' + width + ' ' + height)
+      .attr('viewBox', '0 0 ' + containerWidth + ' ' + containerHeight)
       //class to make it responsive
       .classed('svg-content-responsive', true)
     element.classed('svg-container-responsive', true)
   } else {
     svg
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
+      .attr('width', containerWidth)
+      .attr('height', containerHeight)
       .attr('class', cssNamespace + '__svg')
   }
   return svg

@@ -4,34 +4,36 @@ export default function({
   yAxis,
   showXAxis,
   showYAxis,
-  xTicksRatio,
-  yTicksRatio,
   height,
   width,
-  responsive
+  responsive,
+  xTicks,
+  yTicks,
+  _getXTicks,
+  _getYTicks
 }) {
-  let _y = this.axis === 'y'
-  let showAxis = _y ? showYAxis : showXAxis
+  const _y = this.axis === 'y'
+  const showAxis = _y ? showYAxis : showXAxis
 
   if (showAxis) {
-    let Axis = _y ? yAxis : xAxis
+    const _axis = _y ? yAxis : xAxis
 
+    let ticks
     if (responsive) {
       // adjust ticks to responsiveness
-      let tickRatio = _y ? yTicksRatio : xTicksRatio
-      let tickVal = _y ? height : width
-      let ticks = Math.floor(tickVal*tickRatio)
-      // Axis.ticks(ticks) FIXME
+      ticks = _y ? _getYTicks(width) : _getXTicks(width)
+    } else {
+      ticks = _y ? yTicks : xTicks
     }
 
-    let axis = g.append('g')
+    _axis.ticks(ticks)
+
+    const axis = g.append('g')
       .attr('class', this.cssClasses)
-      .call(Axis)
+      .call(_axis)
 
     // FIXME
-    if (!_y) {
-      axis.attr('transform', 'translate(0,' + height + ')')
-    }
+    !_y ? axis.attr('transform', 'translate(0,' + height + ')') : null
 
     return axis
   }

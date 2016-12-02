@@ -1,12 +1,22 @@
 export default ({
   chart,
-  playbook,
-  playbookFuncs
+  template
 }) => {
-  for (let [func, functions] of playbook) {
+  for (let [func, functions] of template) {
     chart[func] = () => {
-      for (let [attr, f] of functions) {
-        chart[attr] = playbookFuncs.get(f)(chart)
+      // parent funcs can either be mapping for storing returns
+      // or just an array of funcs to run
+      if (Array.isArray(functions)) {
+        functions.map(f => chart[f](chart))
+      } else {
+        for (let [attr, f] of functions) {
+          // don't store return as value if attr starts with `_`
+          if (attr.indexOf('_') == 0) {
+            chart[f](chart)
+          } else {
+            chart[attr] = chart[f](chart)
+          }
+        }
       }
     }
   }

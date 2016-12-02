@@ -1,11 +1,11 @@
-import {select} from '../d3_packages.js'
+import {select} from '../../d3_packages.js'
 
 /**
  * return element to which a chart will be applied.
  * if element not in `document`, it will be created
  *
  * @param {string} elementId - id of html element
- * @param {string} wrapper - wrapper classname (for css and stuff)
+ * @param {string} cssNamespace
  **/
 export default ({
   elementId,
