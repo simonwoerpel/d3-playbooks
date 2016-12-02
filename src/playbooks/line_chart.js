@@ -1,4 +1,4 @@
-import drawLine from '../utils/d3/draw/line.js'
+import drawLine from '../lib/draw/line.js'
 
 export default {
   drawData: drawLine,

@@ -1,5 +1,5 @@
 import setupPlaybook from './playbooks/generate.js'
-import template from './playbook.js'
+import template from './playbooks/template.js'
 import {PLAYBOOKS} from './playbooks/charts.js'
 import Settings from './playbooks/defaults.js'
 

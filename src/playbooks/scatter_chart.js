@@ -1,4 +1,4 @@
-import drawCircles from '../utils/d3/draw/circles.js'
+import drawCircles from '../lib/draw/circles.js'
 
 export default {
   drawData: drawCircles

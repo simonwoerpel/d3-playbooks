@@ -1,4 +1,4 @@
-import {line, curveNatural} from '../../../d3_packages.js'
+import {line, curveNatural} from '../../d3_packages.js'
 
 export default function({
   curve,
@@ -10,13 +10,9 @@ export default function({
   g,
   getColor
 }) {
-  let _line = line()
-    .x(d => {
-      return xScale(d[xCol])
-    })
-    .y(d => {
-      return yScale(d[yCol])
-    })
+  const _line = line()
+    .x(d => xScale(d[xCol]))
+    .y(d => yScale(d[yCol]))
 
   if (curve) {
     _line.curve(curveNatural)
@@ -26,7 +22,5 @@ export default function({
       .datum(data)
       .attr('class', 'line')
       .attr('d', _line)
-      .style('stroke', d => {
-        return getColor(d)
-      })
+      .style('stroke', d => getColor(d))
 }

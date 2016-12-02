@@ -1,7 +1,7 @@
-import getOrdinalDomain from '../utils/d3/get_ordinal_domain.js'
-import getMaxDomain from '../utils/d3/get_max_domain.js'
-import getScale from '../utils/d3/get_scale.js'
-import drawBars from '../utils/d3/draw/bars.js'
+import getOrdinalDomain from '../lib/domains/get_ordinal_domain.js'
+import getMaxDomain from '../lib/domains/get_max_domain.js'
+import getScale from '../lib/scales/get_scale.js'
+import drawBars from '../lib/draw/bars.js'
 
 export default {
   getXDomain: getOrdinalDomain.bind({col: 'x'}),

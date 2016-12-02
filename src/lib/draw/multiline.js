@@ -15,9 +15,7 @@ export default function({
   let {xValues, yValues} = multiData
 
   let _line = line()
-    .x((d, i) => {
-      return xScale(xValues[i])
-    })
+    .x((d, i) => xScale(xValues[i]))
     .y(yScale)
 
   if (curve) {
@@ -29,7 +27,5 @@ export default function({
     .enter().append('path')
       .attr('class', 'line')
       .attr('d', _line)
-      .style('stroke', d => {
-        return getColor(d)
-      })
+      .style('stroke', d => getColor(d))
 }

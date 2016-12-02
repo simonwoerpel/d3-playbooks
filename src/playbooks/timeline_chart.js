@@ -1,5 +1,5 @@
-import getScale from '../utils/d3/get_scale.js'
-import drawLine from '../utils/d3/draw/line.js'
+import getScale from '../lib/scales/get_scale.js'
+import drawLine from '../lib/draw/line.js'
 
 export default {
   getXScale: getScale.bind({kind: 'scaleTime'}),

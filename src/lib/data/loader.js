@@ -1,6 +1,6 @@
 import Papa from 'papaparse'
 import Promise from 'promise-polyfill'
-import {timeParse} from './d3_packages.js'
+import {timeParse} from '../../d3_packages.js'
 
 function _loadCsv(dataUrl) {
   return new Promise((resolve, reject) => {
