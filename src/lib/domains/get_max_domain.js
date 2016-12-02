@@ -5,8 +5,6 @@ export default function({
   xCol,
   yCol
 }) {
-  let col = this.col === 'y' ? yCol : xCol
-  return [this.min, max(data, d => {
-    return d[col]
-  })]
+  const col = this.col === 'y' ? yCol : xCol
+  return [this.min, max(data, d => d[col])]
 }

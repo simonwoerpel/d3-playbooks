@@ -3,8 +3,6 @@ export default function({
   xCol,
   yCol
 }) {
-  let col = this.col === 'y' ? yCol : xCol
-  return data.map(d => {
-    return d[col]
-  })
+  const col = this.col === 'y' ? yCol : xCol
+  return data.map(d => d[col])
 }

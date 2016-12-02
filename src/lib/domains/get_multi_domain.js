@@ -4,17 +4,9 @@ export default function({
   multiData,
   yExtend
 }) {
-
-  let extents = []
+  const extents = []
   multiData.yValues.forEach(v => {
-    extent(v).forEach(e => {
-      extents.push(e)
-    })
+    extent(v).forEach(e => extents.push(e))
   })
-
-  if (yExtend) {
-    return yExtend
-  } else {
-    return extent(extents)
-  }
+  return yExtend || extent(extents)
 }

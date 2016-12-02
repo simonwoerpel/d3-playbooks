@@ -7,15 +7,8 @@ export default function({
   xExtend,
   yExtend
 }) {
-  let y = this.col === 'yCol'
-  let col = y ? yCol : xCol
-  let _extend = y ? yExtend : xExtend
-
-  if (_extend) {
-    return _extend
-  } else {
-    return extent(data, d => {
-      return d[col]
-    })
-  }
+  const y = this.col === 'yCol'
+  const col = y ? yCol : xCol
+  const _extend = y ? yExtend : xExtend
+  return _extend || extent(data, d => d[col])
 }
