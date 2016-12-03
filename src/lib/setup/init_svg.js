@@ -2,7 +2,6 @@
 // @return svg as wrapper svg element (use for resizing if responsive)
 export default ({
   element,
-  width,
   containerWidth,
   containerHeight,
   responsiveSvg,
