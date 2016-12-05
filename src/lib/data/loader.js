@@ -8,18 +8,15 @@ function _loadCsv(dataUrl) {
       download: true,
       header: true,
       dynamicTyping: true,
-      complete: (res) => {
-        resolve(res.data)
-      },
-      error: (err, file) => {
-        reject(new Error('PapaParse: couldn\'t get file: '+err))
-      }
+      complete: (res) => resolve(res.data),
+      error: (err, file) => reject(new Error('PapaParse: couldn\'t get file: '+err))
     })
   })
 }
 
 
 export default ({
+  data,
   dataUrl,
   xCol,
   yCol,
@@ -28,33 +25,23 @@ export default ({
   timeFormat
 }) => {
   return new Promise((resolve) => {
-    _loadCsv(dataUrl).then((rows) => {
-      if (filter) {
-        rows = rows.filter(filter)
-      }
+    // also return promise if data is already there
+    const _getData = data ? new Promise(r => r(data)) : _loadCsv(dataUrl)
+    _getData.then((rows) => {
+      if (filter) rows = rows.filter(filter)
       if (timeFormat) {
         // FIXME
-        let parseTime = timeParse(timeFormat)
-        rows.forEach(r => {
-          r[xCol] = parseTime(r[xCol])
-        })
+        const parseTime = timeParse(timeFormat)
+        rows.forEach(r => r[xCol] = parseTime(r[xCol]))
       }
 
       // ensure data is present
       // FIXME better implementation for both
       // (or later more?) types
       if (xCol && yCols) {
-        resolve(rows.filter(r => {
-          return (r[xCol] && yCols.map(c => {
-            return r[c]
-          }).every(e => {
-            return !!e  // FIXME
-          }))
-        }))
+        resolve(rows.filter(r => (r[xCol] && yCols.map(c => r[c]).every(e => !!e))))
       } else {
-        resolve(rows.filter(r => {
-          return (r[xCol] && r[yCol])
-        }))
+        resolve(rows.filter(r => (r[xCol] && r[yCol])))
       }
     })
   })
