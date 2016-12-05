@@ -41,6 +41,6 @@ export default opts => {
     throw new Error('chart type not implemented')
   }
 
-  const chart = new Chart(opts)
+  const chart = Chart(opts)
   chart.build()
 }
