@@ -1,20 +1,20 @@
-import {line, curveNatural} from '../../../d3_packages.js'
+import {line, curveNatural} from '../../d3_packages.js'
 
-export default function({
+export default ({
   curve,
   multiData,
   xCol,
   yCols,
   xScale,
   yScale,
-  svg,
+  g,
   getColor,
   yDomain
-}) {
+}) => {
 
-  let {xValues, yValues} = multiData
+  const {xValues, yValues} = multiData
 
-  let _line = line()
+  const _line = line()
     .x((d, i) => xScale(xValues[i]))
     .y(yScale)
 
@@ -22,7 +22,7 @@ export default function({
     _line.curve(curveNatural)
   }
 
-  return svg.selectAll('.line')
+  return g.selectAll('.line')
       .data(yValues)
     .enter().append('path')
       .attr('class', 'line')

@@ -23,9 +23,15 @@ export default opts => {
 
   // this should be invoked from "outside"
   chart.build = () => {
-    chart.data.then(data => {
-      chart.data = data
-      chart.render()
+    chart.data.then(d => {
+      chart.data = d
+      // FIXME
+      if (chart.multiData) {
+        chart.multiData.then(d => {
+          chart.multiData = d
+          chart.render()
+        })
+      } else chart.render()
     })
   }
 

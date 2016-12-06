@@ -9,7 +9,7 @@ function _loadCsv(dataUrl) {
       header: true,
       dynamicTyping: true,
       complete: (res) => resolve(res.data),
-      error: (err, file) => reject(new Error('PapaParse: couldn\'t get file: '+err))
+      error: (err, file) => reject(err)
     })
   })
 }

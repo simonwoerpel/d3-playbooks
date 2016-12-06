@@ -1,11 +1,9 @@
-import baseChart from './base_chart.js'
-import getMultiDomain from '../utils/d3/get_multi_domain.js'
-import drawMultiLine from '../utils/d3/draw/multiline.js'
+import getMultiData from '../lib/data/get_multi_data.js'
+import getMultiDomain from '../lib/domains/get_multi_domain.js'
+import drawMultiLine from '../lib/draw/multiline.js'
 
-export default class extends baseChart {
-  constructor() {
-    super()
-    this.getYDomain = getMultiDomain
-    this.drawData = drawMultiLine
-  }
+export default {
+  getMultiData: getMultiData,
+  getYDomain: getMultiDomain,
+  drawData: drawMultiLine
 }

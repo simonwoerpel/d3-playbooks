@@ -21,6 +21,7 @@ import updateBreakpointClasses from '../lib/responsive/update_breakpoint_classes
 
 export default Immutable.Map({
   getData: getData,
+  getMultiData: () => null,  // FIXME
   getChartElement: getChartElement,
   fixDimensions: fixDimensions,
   updateDimensions: updateDimensions,

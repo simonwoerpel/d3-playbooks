@@ -3,6 +3,7 @@ import {OrderedMap as _} from 'immutable'
 export default _({
   init: _({
     data: 'getData',
+    multiData: 'getMultiData',  // FIXME
     element: 'getChartElement',
     _responsive: 'setUpResponsiveness',
     _updateDimensions: 'updateDimensions',
