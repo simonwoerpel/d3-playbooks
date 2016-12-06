@@ -4,11 +4,11 @@ export default function({
   data,
   xCol,
   yCol,
-  xExtend,
-  yExtend
+  xExtent,
+  yExtent
 }) {
   const y = this.col === 'yCol'
   const col = y ? yCol : xCol
-  const _extend = y ? yExtend : xExtend
-  return _extend || extent(data, d => d[col])
+  const _extent = y ? yExtent : xExtent
+  return _extent || extent(data, d => d[col])
 }
