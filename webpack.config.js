@@ -18,6 +18,11 @@ module.exports = {
   devtool: 'eval',
   debug: true,
   module: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        d3: 'd3'
+      })
+    ],
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,

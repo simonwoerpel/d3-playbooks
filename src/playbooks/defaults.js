@@ -1,5 +1,4 @@
 import {Map} from 'immutable'
-import {schemeCategory10} from '../d3_packages.js'
 
 const DEFAULTS = Map({
   width: 800,
@@ -25,7 +24,7 @@ const DEFAULTS = Map({
   xTicks: 10,
   yTicks: 10,
   curve: false,
-  color: schemeCategory10,
+  color: d3.schemeCategory10,
   barMargin: 0,
   barWidth: false,
   timeFormat: false,

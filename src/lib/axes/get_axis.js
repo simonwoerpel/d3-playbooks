@@ -1,6 +1,5 @@
-import {axisLeft, axisRight, axisTop, axisBottom} from '../../d3_packages.js'
-
-const _axes = {
+const {axisLeft, axisRight, axisTop, axisBottom} = d3
+const axes = {
   axisTop,
   axisBottom,
   axisRight,
@@ -12,6 +11,6 @@ export default function({
   yScale
 }) {
   let scale = this.axis === 'y' ? yScale : xScale
-  let axis = _axes[this.kind] || axisBottom
+  let axis = axes[this.kind] || axisBottom
   return axis(scale)
 }

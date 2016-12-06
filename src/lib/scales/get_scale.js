@@ -1,13 +1,12 @@
-import {scaleLinear, scaleOrdinal, scaleBand, scaleTime, scaleLog} from '../../d3_packages.js'
+const {scaleLinear, scaleOrdinal, scaleBand, scaleTime, scaleLog} = d3
 
-const _scales = {
+const scales = {
   scaleLinear,
   scaleOrdinal,
   scaleLog,
   scaleBand,
   scaleTime
 }
-
 
 export default function({
   height,
@@ -17,18 +16,14 @@ export default function({
   xScaleNice,
   yScaleNice
 }) {
-  let _scale = _scales[this.kind] || scaleLinear
-  let _y = this.axis === 'y'
-  let range = _y ? [height, 0] : [0, width]
-  let domain = _y ? yDomain : xDomain
-  let nice = _y ? yScaleNice : xScaleNice
-  let scale = _scale()
+  const _scale = scales[this.kind] || scaleLinear
+  const _y = this.axis === 'y'
+  const range = _y ? [height, 0] : [0, width]
+  const domain = _y ? yDomain : xDomain
+  const nice = _y ? yScaleNice : xScaleNice
+  const scale = _scale()
     .domain(domain)
     .range(range)
 
-  if (nice && (scale.hasOwnProperty('nice'))) {
-    return scale.nice()
-  } else {
-    return scale
-  }
+  return nice && (scale.hasOwnProperty('nice')) ? scale.nice() : scale
 }

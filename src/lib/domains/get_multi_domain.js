@@ -1,12 +1,10 @@
-import {extent, min, max} from '../../d3_packages.js'
-
 export default function({
   multiData,
   yExtend
 }) {
   const extents = []
   multiData.yValues.forEach(v => {
-    extent(v).forEach(e => extents.push(e))
+    d3.extent(v).forEach(e => extents.push(e))
   })
-  return yExtend || extent(extents)
+  return yExtend || d3.extent(extents)
 }
