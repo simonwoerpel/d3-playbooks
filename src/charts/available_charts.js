@@ -7,7 +7,7 @@ import lineChart from './line_chart.js'
 import timeLineChart from './timeline_chart.js'
 // import multiTimeLineChart from './multitimeline_chart.js'
 
-const PLAYBOOKS = {
+const playbooks = {
   barChart: baseChart.merge(barChart),
   scatterChart: baseChart.merge(scatterChart),
   lineChart: baseChart.merge(lineChart),
@@ -16,6 +16,6 @@ const PLAYBOOKS = {
   // multiTimeLineChart: new Playbook(multiTimeLineChart)
 }
 
-const AVAILABLE_CHARTS = Object.keys(PLAYBOOKS)
+const availableCharts = Object.keys(playbooks)
 
-module.exports = {AVAILABLE_CHARTS, PLAYBOOKS}
+module.exports = {availableCharts, playbooks}

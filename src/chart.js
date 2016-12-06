@@ -1,6 +1,6 @@
 import setupPlaybook from './playbooks/generate.js'
 import template from './playbooks/template.js'
-import {PLAYBOOKS} from './playbooks/charts.js'
+import {playbooks} from './charts/available_charts.js'
 import Settings from './playbooks/defaults.js'
 
 export default opts => {
@@ -11,7 +11,7 @@ export default opts => {
 
   // set playbook funcs as properties for this chart.
   // they could be overwritten via the settings merge below
-  for (let [name, attr] of PLAYBOOKS[opts.kind]) {
+  for (let [name, attr] of playbooks[opts.kind]) {
     chart[name] = attr
   }
   for (let prop in opts) {

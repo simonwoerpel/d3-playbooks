@@ -1,3 +1,4 @@
+import '../polyfills/is_array.js'
 import {scaleOrdinal} from '../../d3_packages.js'
 
 /** compute getColor func
@@ -13,32 +14,21 @@ export default ({
   groupCol
 }) => {
 
-  if (typeof color === 'string') {
-    return () => {
-      return color
-    }
-  }
+  if (typeof color === 'string') return () => color
 
   else if (Array.isArray(color)) {
-    let _getColor = scaleOrdinal(color)
-    return (d) => {
-      return _getColor(d[groupCol] || d)
-    }
+    const _getColor = scaleOrdinal(color)
+    return d => _getColor(d[groupCol] || d)
   }
 
   else if (color.constructor === Object) {
     if (!groupCol) {
       throw new Error('need groupCol for this color func')
     }
-
-    return (d) => {
-      return color[d[groupCol]]
-    }
+    return d => color[d[groupCol]]
   }
 
-  else if (typeof color === 'function') {
-    return color
-  }
+  else if (typeof color === 'function') return color
 
   else {
     throw new Error('can\'t compute color function from '+color)

@@ -1,4 +1,4 @@
-import {AVAILABLE_CHARTS} from './playbooks/charts.js'
+import {availableCharts} from './charts/available_charts.js'
 import Chart from './chart.js'
 
 /**
@@ -11,7 +11,7 @@ import Chart from './chart.js'
  * @param {string} elementId - id of html element,
  *    if this element doesn't exist, it will be created
  * @param {string} kind - kind of chart,
- *    check `AVAILABLE_CHARTS` from `./playbooks/charts.js`
+ *    check `availableCharts` from `./playbooks/charts.js`
  * @param {string} dataUrl - url to csv file, will be loaded via `PapaParse`
  * @param {number} width - overall width of chart svg
  * @param {number} height - overall height of chart svg
@@ -37,7 +37,7 @@ import Chart from './chart.js'
  **/
 export default opts => {
   // check for implementation
-  if (AVAILABLE_CHARTS.indexOf(opts.kind) == -1) {
+  if (availableCharts.indexOf(opts.kind) == -1) {
     throw new Error('chart type not implemented')
   }
 

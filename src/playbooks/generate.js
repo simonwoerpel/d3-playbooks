@@ -1,3 +1,5 @@
+import '../lib/polyfills/is_array.js'
+
 export default ({
   chart,
   template
