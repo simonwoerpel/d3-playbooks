@@ -31,7 +31,7 @@ module.exports = {
       loader: 'style-loader!css-loader!less-loader!postcss-loader'
     }]
   },
-  // postcss: [cssimport, cssnested, customProperties, autoprefixer, csswring],
+  postcss: [cssimport, cssnested, customProperties, autoprefixer, csswring],
   devServer: {
     contentBase: './',
     port: 1337,
