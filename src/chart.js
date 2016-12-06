@@ -9,31 +9,45 @@ export default opts => {
   // merge with defaults
   opts = Settings(opts)
 
+  // the main object that will hold
+  // information and might change over time
+  const C = {}
+
   // set playbook funcs as properties for this chart.
   // they could be overwritten via the settings merge below
   for (let [name, attr] of playbooks[opts.kind]) {
-    chart[name] = attr
+    C[name] = attr
   }
   for (let prop in opts) {
-    chart[prop] = opts[prop]
+    C[prop] = opts[prop]
+    // getter / setter methods
+    chart[prop] = function(val) {
+      if (arguments.length === 1) {
+        C[prop] = val
+        return chart
+      } else return C[prop]
+    }
   }
 
-  setupPlaybook({chart, template})
-  chart.init()
+  setupPlaybook({template, C})
 
   // this should be invoked from "outside"
   chart.build = () => {
-    chart.data.then(d => {
-      chart.data = d
+    C.init()
+    C.data.then(d => {
+      C.data = d
       // FIXME
-      if (chart.multiData) {
-        chart.multiData.then(d => {
-          chart.multiData = d
-          chart.render()
+      if (C.multiData) {
+        C.multiData.then(d => {
+          C.multiData = d
+          C.render()
         })
-      } else chart.render()
+      } else C.render()
     })
   }
+
+  // public methods
+  chart.render = C.render
 
   return chart
 }

@@ -40,7 +40,7 @@ export default opts => {
   if (availableCharts.indexOf(opts.kind) == -1) {
     throw new Error('chart type not implemented')
   }
-
   const chart = Chart(opts)
   chart.build()
+  return chart
 }

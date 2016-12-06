@@ -25,6 +25,9 @@
   <h3>multiLineChart</h3>
   <section id="multiline-simple"></section>
 
+  <h3>multiTimeLineChart</h3>
+  <section id="multitimeline-simple"></section>
+
   <script src="d3-playbooks-base.min.js"></script>
   <script type="text/javascript">
 renderChart({
@@ -54,7 +57,7 @@ renderChart({
 
 renderChart({
     kind: "multiLineChart",
-    elementId: "example-multiline",
+    elementId: "multiline-simple",
     dataUrl: 'data/multiline.csv',
     legend: true,
     yCols: ['y1', 'y2', 'y3']

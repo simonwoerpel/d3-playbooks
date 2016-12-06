@@ -1,11 +1,11 @@
-import {Map} from 'immutable'
+import {Map as _} from 'immutable'
 import {schemeCategory10} from '../d3_packages.js'
 
-const DEFAULTS = Map({
-  width: 800,
-  height: 500,
+const DEFAULTS = _({
+  width: 600,
+  height: 400,
   cssNamespace: 'd3-playbooks',
-  margin: Map({
+  margin: _({
     top: 20,
     right: 20,
     bottom: 30,
@@ -33,11 +33,11 @@ const DEFAULTS = Map({
   drawExtra: c => undefined,
   sizeRange: [3, 8],
   size: 6,
-  breakpoints: Map({
+  breakpoints: _({
     small: 480,
     medium: 768,
     large: 1280
-  }),
+  })
 })
 
 export default opts => DEFAULTS.merge(opts).toJS()
