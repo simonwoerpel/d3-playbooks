@@ -3,7 +3,9 @@ import getMultiDomain from '../lib/domains/get_multi_domain.js'
 import drawMultiLine from '../lib/draw/multiline.js'
 
 export default {
-  getMultiData: getMultiData,
-  getYDomain: getMultiDomain,
-  drawData: drawMultiLine
+  plays: {
+    getMultiData: getMultiData,
+    getYDomain: getMultiDomain,
+    drawData: drawMultiLine
+  }
 }

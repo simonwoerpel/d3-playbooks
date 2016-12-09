@@ -1,13 +1,13 @@
 import setupPlaybook from './playbooks/generate.js'
 import template from './playbooks/template.js'
-import {playbooks} from './charts/available_charts.js'
-import Settings from './playbooks/defaults.js'
+import playbooks from './charts/available_charts.js'
 
 export default opts => {
   const chart = () => {}
+  const playbook = playbooks[opts.kind]
 
-  // merge with defaults
-  opts = Settings(opts)
+  // merge opts with defaults
+  const settings = playbook.get('defaults').mergeDeep(opts).toJS()
 
   // the main object that will hold
   // information and might change over time
@@ -15,19 +15,20 @@ export default opts => {
 
   // set playbook funcs as properties for this chart.
   // they could be overwritten via the settings merge below
-  for (let [name, attr] of playbooks[opts.kind]) {
+  for (let [name, attr] of playbook.get('plays')) {
     C[name] = attr
   }
-  for (let prop in opts) {
-    C[prop] = opts[prop]
-    // getter / setter methods
-    chart[prop] = function(val) {
+
+  // settings and getter / setter methods for these
+  Object.keys(settings).map(name => {
+    C[name] = settings[name]
+    chart[name] = function(val) {
       if (arguments.length === 1) {
-        C[prop] = val
+        C[name] = val
         return chart
-      } else return C[prop]
+      } else return C[name]
     }
-  }
+  })
 
   setupPlaybook({template, C})
 

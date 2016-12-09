@@ -1,4 +1,4 @@
-import Immutable from 'immutable'
+import {schemeCategory10} from '../d3_packages.js'
 
 import getData from '../lib/data/loader.js'
 import getChartElement from '../lib/setup/get_chart_element.js'
@@ -19,29 +19,62 @@ import getSizeFunc from '../lib/sizes/get_size.js'
 import updateBreakpoints from '../lib/responsive/update_breakpoints.js'
 import updateBreakpointClasses from '../lib/responsive/update_breakpoint_classes.js'
 
-export default Immutable.Map({
-  getData: getData,
-  getMultiData: () => null,  // FIXME
-  getChartElement: getChartElement,
-  fixDimensions: fixDimensions,
-  updateDimensions: updateDimensions,
-  setUpResponsiveness: setUpResponsiveness,
-  initSvg: initSvg,
-  initG: initG,
-  getXDomain: getExtentDomain.bind({col: 'xCol'}),
-  getYDomain: getExtentDomain.bind({col: 'yCol'}),
-  getXScale: getScale.bind({axis: 'x'}),
-  getYScale: getScale.bind({axis: 'y'}),
-  getXAxis: getAxis.bind({kind: 'axisBottom', axis: 'x'}),
-  getYAxis: getAxis.bind({kind: 'axisLeft', axis: 'y'}),
-  renderXAxis: renderAxis.bind({cssClasses: 'x axis'}),
-  renderYAxis: renderAxis.bind({axis: 'y', cssClasses: 'y axis'}),
-  renderXLabel: renderAxisLabel.bind({axis: 'x'}),
-  renderYLabel: renderAxisLabel.bind({axis: 'y'}),
-  getColorFunc: getColorFunc,
-  getSizeFunc: getSizeFunc,
-  getBreakpoints: getBreakpoints,
-  updateBreakpoints: updateBreakpoints,
-  updateBreakpointClasses: updateBreakpointClasses,
-  updateSvg: updateSvg
-})
+export default {
+  plays: {
+    getData: getData,
+    getMultiData: () => null,  // FIXME
+    getChartElement: getChartElement,
+    fixDimensions: fixDimensions,
+    updateDimensions: updateDimensions,
+    setUpResponsiveness: setUpResponsiveness,
+    initSvg: initSvg,
+    initG: initG,
+    getXDomain: getExtentDomain.bind({col: 'xCol'}),
+    getYDomain: getExtentDomain.bind({col: 'yCol'}),
+    getXScale: getScale.bind({axis: 'x'}),
+    getYScale: getScale.bind({axis: 'y'}),
+    getXAxis: getAxis.bind({kind: 'axisBottom', axis: 'x'}),
+    getYAxis: getAxis.bind({kind: 'axisLeft', axis: 'y'}),
+    renderXAxis: renderAxis.bind({cssClasses: 'x axis'}),
+    renderYAxis: renderAxis.bind({axis: 'y', cssClasses: 'y axis'}),
+    renderXLabel: renderAxisLabel.bind({axis: 'x'}),
+    renderYLabel: renderAxisLabel.bind({axis: 'y'}),
+    getColorFunc: getColorFunc,
+    getSizeFunc: getSizeFunc,
+    getBreakpoints: getBreakpoints,
+    updateBreakpoints: updateBreakpoints,
+    updateBreakpointClasses: updateBreakpointClasses,
+    updateSvg: updateSvg
+  },
+  defaults: {
+    width: 600,
+    height: 400,
+    cssNamespace: 'd3-playbooks',
+    margin: {
+      top: 20,
+      right: 20,
+      bottom: 30,
+      left: 30
+    },
+    showXAxis: true,
+    showYAxis: true,
+    showXLabel: true,
+    showYLabel: true,
+    xCol: 'x',
+    yCol: 'y',
+    xScaleNice: true,
+    yScaleNice: true,
+    responsive: true,
+    responsiveSvg: false,
+    xTicks: 10,
+    yTicks: 10,
+    color: schemeCategory10,
+    filter: false,
+    drawExtra: c => undefined,
+    breakpoints: {
+      small: 480,
+      medium: 768,
+      large: 1280
+    }
+  }
+}

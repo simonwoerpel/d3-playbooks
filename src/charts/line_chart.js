@@ -1,5 +1,10 @@
 import drawLine from '../lib/draw/line.js'
 
 export default {
-  drawData: drawLine
+  plays: {
+    drawData: drawLine
+  },
+  defaults: {
+    curve: false
+  }
 }

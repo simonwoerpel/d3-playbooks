@@ -4,8 +4,14 @@ import getScale from '../lib/scales/get_scale.js'
 import drawBars from '../lib/draw/bars.js'
 
 export default {
-  getXDomain: getOrdinalDomain.bind({col: 'x'}),
-  getYDomain: getMaxDomain.bind({col: 'y', min: 0}),
-  getXScale: getScale.bind({kind: 'scaleBand'}),
-  drawData: drawBars
+  plays: {
+    getXDomain: getOrdinalDomain.bind({col: 'x'}),
+    getYDomain: getMaxDomain.bind({col: 'y', min: 0}),
+    getXScale: getScale.bind({kind: 'scaleBand'}),
+    drawData: drawBars
+  },
+  defaults:  {
+    barMargin: 0,
+    barWidth: false
+  }
 }

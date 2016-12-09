@@ -1,3 +1,4 @@
+import {fromJS as _} from 'immutable'
 import baseChart from './base_chart.js'
 
 import barChart from './bar_chart.js'
@@ -7,15 +8,15 @@ import multiLineChart from './multiline_chart.js'
 import timeLineChart from './timeline_chart.js'
 import multiTimeLineChart from './multitimeline_chart.js'
 
-const playbooks = {
-  barChart: baseChart.merge(barChart),
-  scatterChart: baseChart.merge(scatterChart),
-  lineChart: baseChart.merge(lineChart),
-  multiLineChart: baseChart.merge(multiLineChart),
-  timeLineChart: baseChart.merge(timeLineChart),
-  multiTimeLineChart: baseChart.merge(multiTimeLineChart)
+const _base = _(baseChart)
+
+const _getPlaybook = o => _base.mergeDeep(_(o))
+
+export default {
+  barChart: _getPlaybook(barChart),
+  scatterChart: _getPlaybook(scatterChart),
+  lineChart: _getPlaybook(lineChart),
+  multiLineChart: _getPlaybook(multiLineChart),
+  timeLineChart: _getPlaybook(timeLineChart),
+  multiTimeLineChart: _getPlaybook(multiTimeLineChart)
 }
-
-const availableCharts = Object.keys(playbooks)
-
-module.exports = {availableCharts, playbooks}

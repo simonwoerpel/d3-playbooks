@@ -1,4 +1,3 @@
-import {availableCharts} from './charts/available_charts.js'
 import Chart from './chart.js'
 
 /**
@@ -36,10 +35,6 @@ import Chart from './chart.js'
  *
  **/
 export default opts => {
-  // check for implementation
-  if (availableCharts.indexOf(opts.kind) == -1) {
-    throw new Error('chart type not implemented')
-  }
   const chart = Chart(opts)
   chart.build()
   return chart

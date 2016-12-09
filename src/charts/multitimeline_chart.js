@@ -4,8 +4,13 @@ import getScale from '../lib/scales/get_scale.js'
 import drawMultiLine from '../lib/draw/multiline.js'
 
 export default {
-  getMultiData: getMultiData,
-  getYDomain: getMultiDomain,
-  getXScale: getScale.bind({kind: 'scaleTime'}),
-  drawData: drawMultiLine
+  plays: {
+    getMultiData: getMultiData,
+    getYDomain: getMultiDomain,
+    getXScale: getScale.bind({kind: 'scaleTime'}),
+    drawData: drawMultiLine
+  },
+  defaults: {
+    timeFormat: '%Y-%m-%d %H:%M:%S'
+  }
 }
