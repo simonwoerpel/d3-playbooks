@@ -22,9 +22,10 @@ export default opts => {
   // settings and getter / setter methods for these
   Object.keys(settings).map(name => {
     C[name] = settings[name]
-    chart[name] = function(val) {
-      if (arguments.length === 1) {
-        C[name] = val
+    // chart[name] = function(val) {
+    chart[name] = (...val) => {
+      if (val.length === 1) {
+        C[name] = val[0]
         return chart
       } else return C[name]
     }
