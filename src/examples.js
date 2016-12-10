@@ -1,46 +1,33 @@
-import renderChart from './render_chart.js'
-
-console.log(d3)
-
 export default () => {
-  renderChart({
-      kind: 'barChart',
+  d3.playbooks.barChart({
       elementId: 'bar-simple',
       dataUrl: 'data/bar.csv'
-  })
+  }).build()
 
-  renderChart({
-      kind: 'lineChart',
+  d3.playbooks.lineChart({
       elementId: 'line-simple',
       dataUrl: 'data/line.csv'
-  })
+  }).build()
 
-  renderChart({
-      kind: 'scatterChart',
+  d3.playbooks.scatterChart({
       elementId: 'scatter-simple',
       dataUrl: 'data/scatter.csv'
-  })
+  }).build()
 
-  renderChart({
-      kind: 'timeLineChart',
+  d3.playbooks.timeLineChart({
       elementId: 'timeline-simple',
       dataUrl: 'data/timeline.csv'
-  })
+  }).build()
 
-  renderChart({
-      kind: 'multiLineChart',
+  d3.playbooks.multiLineChart({
       elementId: 'multiline-simple',
       dataUrl: 'data/multiline.csv',
-      legend: true,
       yCols: ['y1', 'y2', 'y3']
-  })
+  }).build()
 
-  renderChart({
-      kind: 'multiTimeLineChart',
+  d3.playbooks.multiTimeLineChart({
       elementId: 'multitimeline-simple',
       dataUrl: 'data/multitimeline.csv',
-      yCols: ['count_clinton', 'count_trump'],
-      legend: true,
-      timeFormat: '%Y-%m-%d %H:%M:%S'
-  })
+      yCols: ['count_clinton', 'count_trump']
+  }).build()
 }
