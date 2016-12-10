@@ -13,7 +13,7 @@ export default ({
   if (element.empty()) {
     element = d3.select('body')
       .append('div')
-      .attr('id', elementId)
+    elementId ? element.attr('id', elementId) : null
   }
 
   return element.append('div')
