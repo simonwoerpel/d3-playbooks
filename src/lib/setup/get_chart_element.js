@@ -1,5 +1,3 @@
-import {select} from '../../d3_packages.js'
-
 /**
  * return element to which a chart will be applied.
  * if element not in `document`, it will be created
@@ -11,9 +9,9 @@ export default ({
   elementId,
   cssNamespace
 }) => {
-  let element = select('#'+elementId)
+  let element = d3.select('#'+elementId)
   if (element.empty()) {
-    element = select('body')
+    element = d3.select('body')
       .append('div')
       .attr('id', elementId)
   }

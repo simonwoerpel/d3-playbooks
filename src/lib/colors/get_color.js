@@ -1,5 +1,4 @@
 import '../polyfills/is_array.js'
-import {scaleOrdinal} from '../../d3_packages.js'
 
 /** compute getColor func
  *
@@ -17,7 +16,7 @@ export default ({
   if (typeof color === 'string') return () => color
 
   else if (Array.isArray(color)) {
-    const _getColor = scaleOrdinal(color)
+    const _getColor = d3.scaleOrdinal(color)
     return d => _getColor(d[groupCol] || d)
   }
 

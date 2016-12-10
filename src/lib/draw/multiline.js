@@ -1,5 +1,3 @@
-import {line, curveNatural} from '../../d3_packages.js'
-
 export default ({
   curve,
   multiData,
@@ -11,21 +9,20 @@ export default ({
   getColor,
   yDomain
 }) => {
-
   const {xValues, yValues} = multiData
 
-  const _line = line()
+  const line = d3.line()
     .x((d, i) => xScale(xValues[i]))
     .y(yScale)
 
   if (curve) {
-    _line.curve(curveNatural)
+    line.curve(d3.curveNatural)
   }
 
   return g.selectAll('.line')
       .data(yValues)
     .enter().append('path')
       .attr('class', 'line')
-      .attr('d', _line)
+      .attr('d', line)
       .style('stroke', d => getColor(d))
 }

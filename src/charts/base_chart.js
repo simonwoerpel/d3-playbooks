@@ -1,5 +1,3 @@
-import {schemeCategory10} from '../d3_packages.js'
-
 import getData from '../lib/data/loader.js'
 import getChartElement from '../lib/setup/get_chart_element.js'
 import fixDimensions from '../lib/setup/fix_dimensions.js'
@@ -68,7 +66,7 @@ export default {
     responsiveSvg: false,
     xTicks: 10,
     yTicks: 10,
-    color: schemeCategory10,
+    color: d3.schemeCategory10,
     filter: false,
     drawExtra: c => undefined,
     breakpoints: {

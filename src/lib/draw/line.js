@@ -1,6 +1,4 @@
-import {line, curveNatural} from '../../d3_packages.js'
-
-export default function({
+export default ({
   curve,
   data,
   xCol,
@@ -9,18 +7,18 @@ export default function({
   yScale,
   g,
   getColor
-}) {
-  const _line = line()
+}) => {
+  const line = d3.line()
     .x(d => xScale(d[xCol]))
     .y(d => yScale(d[yCol]))
 
   if (curve) {
-    _line.curve(curveNatural)
+    line.curve(d3.curveNatural)
   }
 
   return g.append('path')
       .datum(data)
       .attr('class', 'line')
-      .attr('d', _line)
+      .attr('d', line)
       .style('stroke', d => getColor(d))
 }

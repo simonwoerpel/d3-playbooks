@@ -1,4 +1,3 @@
-import {scaleLinear, extent} from '../../d3_packages.js'
 // compute getSize function
 export default ({
   data,
@@ -7,17 +6,11 @@ export default ({
   size
 }) => {
   if (sizeCol) {
-    let domain = extent(data, d => {
-      return d[sizeCol]
-    })
-    return scaleLinear()
+    const domain = d3.extent(data, d => d[sizeCol])
+    return d3.scaleLinear()
       .domain(domain)
       .range(sizeRange)
   } else {
-    return () => {
-      return size
-    }
+    return () => size
   }
 }
-
-
