@@ -44,9 +44,10 @@ module.exports = options => {
   if (options.isProduction) {
     webpackConfig.entry = ['./src/main.js']
 
-    // d3v4 is external dependency
+    // external dependencies
     webpackConfig.externals = {
-      d3: 'd3'
+      d3: 'd3',
+      Papa: 'papaparse'
     }
 
     webpackConfig.plugins.push(
