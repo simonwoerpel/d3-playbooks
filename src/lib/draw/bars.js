@@ -10,13 +10,15 @@ export default function({
   barMargin,
   barWidth
 }) {
-  // FIXME make bars real center ???
-  const bandWith = barWidth ? xScale.bandwidth() * barWidth : xScale.bandwidth() - barMargin
+  const origBandWidth = xScale.bandwidth()
+  const bandWith = barWidth ? barWidth : origBandWidth - barMargin
+  // make bars center
+  const xFix = (origBandWidth - bandWith) / 2
   return g.selectAll('.bar')
       .data(data)
     .enter().append('rect')
       .attr('class', 'bar')
-      .attr('x', d => xScale(d[xCol]) + barMargin)
+      .attr('x', d => xScale(d[xCol]) + xFix)
       .attr('width', bandWith)
       .attr('y', d => yScale(d[yCol]))
       .attr('height', d => height - yScale(d[yCol]))
