@@ -1,10 +1,8 @@
 import setupPlaybook from './playbooks/generate.js'
 import template from './playbooks/template.js'
-import playbooks from './charts/available_charts.js'
 
-export default opts => {
+export default ({opts, playbook}) => {
   const chart = () => {}
-  const playbook = playbooks[opts.kind]
 
   // merge opts with defaults
   const settings = playbook.get('defaults').mergeDeep(opts).toJS()
@@ -22,7 +20,6 @@ export default opts => {
   // settings and getter / setter methods for these
   Object.keys(settings).map(name => {
     C[name] = settings[name]
-    // chart[name] = function(val) {
     chart[name] = (...val) => {
       if (val.length === 1) {
         C[name] = val[0]
@@ -49,6 +46,7 @@ export default opts => {
   }
 
   // public methods
+  // FIXME / TODO handle Promise
   chart.render = C.render
 
   return chart
