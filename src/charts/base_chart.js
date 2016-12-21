@@ -20,7 +20,7 @@ import updateBreakpointClasses from '../lib/responsive/update_breakpoint_classes
 export default {
   plays: {
     getData: getData,
-    getMultiData: () => null,  // FIXME
+    getMultiData: () => {},  // FIXME
     getChartElement: getChartElement,
     fixDimensions: fixDimensions,
     updateDimensions: updateDimensions,

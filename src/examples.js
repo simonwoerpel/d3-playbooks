@@ -3,6 +3,12 @@ export default () => {
       dataUrl: 'data/bar.csv'
   }).build()
 
+  d3.playbooks.horizontalBarChart({
+      dataUrl: 'data/bar.csv',
+      xCol: 'y',
+      yCol: 'x'
+  }).build()
+
   d3.playbooks.lineChart({
       dataUrl: 'data/line.csv'
   }).build()

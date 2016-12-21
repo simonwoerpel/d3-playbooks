@@ -1,4 +1,4 @@
-//global: Papa
+import Papa from 'papaparse'
 import Promise from 'promise-polyfill'
 
 function _loadCsv(dataUrl) {
