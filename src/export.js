@@ -4,6 +4,7 @@ import chart from './chart.js'
 
 // init
 d3.playbooks = {}
+d3.playbooks.CHART_TYPES = Object.keys(charts)
 
 const defaults = {global: {}}
 
@@ -13,7 +14,7 @@ d3.playbooks.defaults = opts => {
 }
 
 // chart types as functions
-Object.keys(charts).map(c => {
+d3.playbooks.CHART_TYPES.map(c => {
   defaults[c] = {}
 
   d3.playbooks[c] = opts => {
