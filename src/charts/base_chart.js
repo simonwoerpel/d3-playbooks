@@ -7,6 +7,7 @@ import setUpResponsiveness from '../lib/responsive/setup_responsiveness.js'
 import initSvg from '../lib/setup/init_svg.js'
 import initG from '../lib/setup/init_g.js'
 import updateSvg from '../lib/responsive/update_svg.js'
+import resetG from '../lib/draw/reset_g.js'
 import getExtentDomain from '../lib/domains/get_extent_domain.js'
 import getScale from '../lib/scales/get_scale.js'
 import getAxis from '../lib/axes/get_axis.js'
@@ -42,7 +43,8 @@ export default {
     getBreakpoints: getBreakpoints,
     updateBreakpoints: updateBreakpoints,
     updateBreakpointClasses: updateBreakpointClasses,
-    updateSvg: updateSvg
+    updateSvg: updateSvg,
+    resetG: resetG
   },
   defaults: {
     width: 600,
@@ -68,7 +70,7 @@ export default {
     yTicks: 10,
     color: d3.schemeCategory10,
     filter: false,
-    drawExtra: c => undefined,
+    drawExtra: c => {},
     breakpoints: {
       small: 480,
       medium: 768,

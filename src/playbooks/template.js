@@ -19,7 +19,7 @@ export default _({
     xDomain: 'getXDomain',
     yDomain: 'getYDomain'
   }),
-  beforeDraw: _({
+  prepareDraw: _({
     xScale: 'getXScale',
     yScale: 'getYScale',
     xAxis: 'getXAxis',
@@ -35,14 +35,15 @@ export default _({
   }),
   render: [
     'setup',
-    'beforeDraw',
+    'prepareDraw',
     'draw'
   ],
   resize: [
     'updateBreakpoints',
     'updateBreakpointClasses',
     'updateSvg',
-    'beforeDraw',
+    'resetG',
+    'prepareDraw',
     'draw'
   ]
 })
