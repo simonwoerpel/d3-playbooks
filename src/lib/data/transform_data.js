@@ -6,17 +6,25 @@ import '../polyfills/is_array.js'
  *    [{x: 1, y: 2}, {x: 2, y: 3}, ...]
  * to have same structure as the asynchronous `dataUrl` csv handling
 **/
-export default data => {
+export default ({
+  data,
+  xCol,
+  yCol,
+  yCols // FIXME
+}) => {
 
   /**
    * [
-   *  ['a', 'b', 'c'],   <= x
-   *  [1, 2, 3]          <= y
+   *  ['a', 'b', 'c'],   <= xCol (default: 'x')
+   *  [1, 2, 3]          <= yCol (default: 'y')
    * ]
   **/
   if (Array.isArray(data) && Array.isArray(data[0])) {
     return data[0].map((d, i) => {
-      return {x: d, y: data[1][i]}
+      const _data = {}
+      _data[xCol] = d
+      _data[yCol] = data[1][i]
+      return _data
     })
   }
 

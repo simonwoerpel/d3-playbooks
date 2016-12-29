@@ -1,4 +1,5 @@
 import getData from '../lib/data/loader.js'
+import prepareData from '../lib/data/prepare.js'
 import getChartElement from '../lib/setup/get_chart_element.js'
 import fixDimensions from '../lib/setup/fix_dimensions.js'
 import updateDimensions from '../lib/responsive/update_dimensions.js'
@@ -21,6 +22,7 @@ import updateBreakpointClasses from '../lib/responsive/update_breakpoint_classes
 export default {
   plays: {
     getData: getData,
+    prepareData: prepareData,
     getMultiData: () => {},  // FIXME
     getChartElement: getChartElement,
     fixDimensions: fixDimensions,
@@ -62,6 +64,8 @@ export default {
     showYLabel: true,
     xCol: 'x',
     yCol: 'y',
+    xTransform: d => Number(d),
+    yTransform: d => Number(d),
     xScaleNice: true,
     yScaleNice: true,
     responsive: true,

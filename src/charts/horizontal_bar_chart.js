@@ -11,6 +11,7 @@ export default {
     drawData: drawHorizontalBars
   },
   defaults:  {
+    yTransform: d => d,
     barMargin: 0,
     barWidth: false
   }

@@ -33,15 +33,16 @@ export default ({opts, playbook}) => {
   // this should be invoked from "outside"
   chart.build = () => {
     C.init()
-    C.data.then(d => {
-      C.data = d
+    C.rawData.then(d => {
+      C.rawData = d
       // FIXME
-      if (C.multiData) {
-        C.multiData.then(d => {
-          C.multiData = d
-          C.render()
-        })
-      } else C.render()
+      // if (C.multiData) {
+      //   C.multiData.then(d => {
+      //     C.multiData = d
+      //     C.render()
+      //   })
+      // } else C.render()
+      C.render()
     })
   }
 

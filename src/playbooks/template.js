@@ -2,8 +2,7 @@ import {OrderedMap as _} from 'immutable'
 
 export default _({
   init: _({
-    data: 'getData',
-    multiData: 'getMultiData',  // FIXME
+    rawData: 'getData',
     element: 'getChartElement',
     _responsive: 'setUpResponsiveness',
     _updateDimensions: 'updateDimensions',
@@ -14,6 +13,8 @@ export default _({
     g: 'initG'
   }),
   setup: _({
+    data: 'prepareData',
+    multiData: 'getMultiData',  // FIXME
     getColor: 'getColorFunc',
     getSize: 'getSizeFunc',
     xDomain: 'getXDomain',

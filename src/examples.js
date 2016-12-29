@@ -6,7 +6,7 @@ export default () => {
   d3.playbooks.horizontalBarChart({
     dataUrl: 'data/bar.csv',
     data: [
-      [1, 3, 2],
+      ['1', 3, '2'],
       ['a', 'b', 'c']
     ]
   }).build()
