@@ -1,5 +1,6 @@
 import Papa from 'papaparse'
 import Promise from 'promise-polyfill'
+import transformData from './transform_data.js'
 
 function _loadCsv(dataUrl) {
   return new Promise((resolve, reject) => {
@@ -25,7 +26,7 @@ export default ({
 }) => {
   return new Promise((resolve) => {
     // also return promise if data is already there
-    const _getData = data ? new Promise(r => r(data)) : _loadCsv(dataUrl)
+    const _getData = data ? new Promise(r => r(transformData(data))) : _loadCsv(dataUrl)
     _getData.then((rows) => {
       if (filter) rows = rows.filter(filter)
       if (timeFormat) {

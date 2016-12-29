@@ -5,8 +5,10 @@ export default () => {
 
   d3.playbooks.horizontalBarChart({
     dataUrl: 'data/bar.csv',
-    xCol: 'y',
-    yCol: 'x'
+    data: [
+      [1, 3, 2],
+      ['a', 'b', 'c']
+    ]
   }).build()
 
   d3.playbooks.lineChart({
@@ -14,7 +16,10 @@ export default () => {
   }).build()
 
   d3.playbooks.scatterChart({
-    dataUrl: 'data/scatter.csv'
+    data: {
+      x: [1, 2, 3, 4, 6],
+      y: [2, 5, 1, 1, 8]
+    }
   }).build()
 
   d3.playbooks.timeLineChart({
