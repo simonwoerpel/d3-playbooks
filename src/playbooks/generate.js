@@ -1,4 +1,4 @@
-import '../lib/polyfills/is_array.js'
+import '../utils/polyfills/is_array.js'
 
 export default ({
   template,

@@ -1,4 +1,4 @@
-import drawCircles from '../lib/draw/circles.js'
+import drawCircles from '../../utils/draw/circles.js'
 
 export default {
   plays: {

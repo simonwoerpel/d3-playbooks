@@ -1,5 +1,5 @@
 import {fromJS as _} from 'immutable'
-import charts from './charts/available_charts.js'
+import charts from './playbooks/charts/available_charts.js'
 import chart from './chart.js'
 
 // init

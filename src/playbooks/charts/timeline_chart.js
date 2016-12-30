@@ -1,5 +1,5 @@
-import getScale from '../lib/scales/get_scale.js'
-import drawLine from '../lib/draw/line.js'
+import getScale from '../../utils/scales/get_scale.js'
+import drawLine from '../../utils/draw/line.js'
 
 export default {
   plays: {

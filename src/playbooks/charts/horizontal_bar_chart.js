@@ -1,7 +1,7 @@
-import getOrdinalDomain from '../lib/domains/get_ordinal_domain.js'
-import getMaxDomain from '../lib/domains/get_max_domain.js'
-import getScale from '../lib/scales/get_scale.js'
-import drawHorizontalBars from '../lib/draw/horizontal_bars.js'
+import getOrdinalDomain from '../../utils/domains/get_ordinal_domain.js'
+import getMaxDomain from '../../utils/domains/get_max_domain.js'
+import getScale from '../../utils/scales/get_scale.js'
+import drawHorizontalBars from '../../utils/draw/horizontal_bars.js'
 
 export default {
   plays: {
