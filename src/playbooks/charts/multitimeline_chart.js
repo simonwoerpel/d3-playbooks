@@ -11,6 +11,7 @@ export default {
     drawData: drawMultiLine
   },
   defaults: {
+    yTransforms: {},
     timeFormat: '%Y-%m-%d %H:%M:%S'
   }
 }

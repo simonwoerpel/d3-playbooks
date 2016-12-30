@@ -5,12 +5,22 @@ export default ({
   rawData,
   xCol,
   yCol,
+  yCols,
   xTransform,
-  yTransform
+  yTransform,
+  yTransforms
 }) => {
   return rawData.map(d => {
     d[xCol] = xTransform(d[xCol])
-    d[yCol] = yTransform(d[yCol])
+    if (yCols) {
+      yCols.map(c => {
+        const cd = d[c]
+        const transform = yTransforms[c] || yTransform
+        d[c] = transform(cd)
+      })
+    } else {
+      d[yCol] = yTransform(d[yCol])
+    }
     return d
   })
 }

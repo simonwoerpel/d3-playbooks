@@ -5,7 +5,11 @@ import drawMultiLine from '../../utils/draw/multiline.js'
 export default {
   plays: {
     getMultiData: getMultiData,
+    yTransform: d => Number(d),
     getYDomain: getMultiDomain,
     drawData: drawMultiLine
+  },
+  defaults: {
+    yTransforms: {}
   }
 }

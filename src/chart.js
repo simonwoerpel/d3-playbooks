@@ -35,13 +35,6 @@ export default ({opts, playbook}) => {
     C.init()
     C.rawData.then(d => {
       C.rawData = d
-      // FIXME
-      // if (C.multiData) {
-      //   C.multiData.then(d => {
-      //     C.multiData = d
-      //     C.render()
-      //   })
-      // } else C.render()
       C.render()
     })
   }
