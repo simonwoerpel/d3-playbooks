@@ -1,5 +1,5 @@
 import './style/main.scss'
-import './export.js'
+import './public.js'
 import renderExamples from './examples.js'
 
 if (process.env.NODE_ENV == 'development') {
