@@ -1,9 +1,6 @@
 import '../utils/polyfills/is_array.js'
 
-export default ({
-  template,
-  C
-}) => {
+export default (template, C) => {
   for (let [func, functions] of template) {
     C[func] = () => {
       // parent funcs can either be mapping for storing returns
