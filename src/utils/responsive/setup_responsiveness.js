@@ -21,8 +21,8 @@ export default chart => {
       const ticks = parseInt(width * xTicksRatio)
       return ticks < 2 ? 2 : ticks > chart.xTicks ? chart.xTicks : ticks
     }
-    chart._getYTicks = width => {
-      const ticks = parseInt(width * yTicksRatio)
+    chart._getYTicks = height => {
+      const ticks = parseInt(height * yTicksRatio)
       return ticks < 2 ? 2 : ticks > chart.yTicks ? chart.yTicks : ticks
     }
 

@@ -16,7 +16,7 @@ export default ({
     .y(yScale)
 
   if (curve) {
-    line.curve(d3.curveNatural)
+    line.curve(curve)
   }
 
   return g.selectAll('.line')

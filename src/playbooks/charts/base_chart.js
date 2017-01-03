@@ -1,26 +1,29 @@
-import getData from '../lib/data/loader.js'
-import getChartElement from '../lib/setup/get_chart_element.js'
-import fixDimensions from '../lib/setup/fix_dimensions.js'
-import updateDimensions from '../lib/responsive/update_dimensions.js'
-import getBreakpoints from '../lib/responsive/get_breakpoints.js'
-import setUpResponsiveness from '../lib/responsive/setup_responsiveness.js'
-import initSvg from '../lib/setup/init_svg.js'
-import initG from '../lib/setup/init_g.js'
-import updateSvg from '../lib/responsive/update_svg.js'
-import getExtentDomain from '../lib/domains/get_extent_domain.js'
-import getScale from '../lib/scales/get_scale.js'
-import getAxis from '../lib/axes/get_axis.js'
-import renderAxis from '../lib/axes/render_axis.js'
-import renderAxisLabel from '../lib/axes/render_axis_label.js'
-import getColorFunc from '../lib/colors/get_color.js'
-import getSizeFunc from '../lib/sizes/get_size.js'
-import updateBreakpoints from '../lib/responsive/update_breakpoints.js'
-import updateBreakpointClasses from '../lib/responsive/update_breakpoint_classes.js'
+import getData from '../../utils/data/loader.js'
+import prepareData from '../../utils/data/prepare.js'
+import getChartElement from '../../utils/setup/get_chart_element.js'
+import fixDimensions from '../../utils/setup/fix_dimensions.js'
+import updateDimensions from '../../utils/responsive/update_dimensions.js'
+import getBreakpoints from '../../utils/responsive/get_breakpoints.js'
+import setUpResponsiveness from '../../utils/responsive/setup_responsiveness.js'
+import initSvg from '../../utils/setup/init_svg.js'
+import initG from '../../utils/setup/init_g.js'
+import updateSvg from '../../utils/responsive/update_svg.js'
+import resetG from '../../utils/draw/reset_g.js'
+import getExtentDomain from '../../utils/domains/get_extent_domain.js'
+import getScale from '../../utils/scales/get_scale.js'
+import getAxis from '../../utils/axes/get_axis.js'
+import renderAxis from '../../utils/axes/render_axis.js'
+import renderAxisLabel from '../../utils/axes/render_axis_label.js'
+import getColorFunc from '../../utils/colors/get_color.js'
+import getSizeFunc from '../../utils/sizes/get_size.js'
+import updateBreakpoints from '../../utils/responsive/update_breakpoints.js'
+import updateBreakpointClasses from '../../utils/responsive/update_breakpoint_classes.js'
 
 export default {
   plays: {
     getData: getData,
-    getMultiData: () => null,  // FIXME
+    prepareData: prepareData,
+    getMultiData: () => {},  // FIXME
     getChartElement: getChartElement,
     fixDimensions: fixDimensions,
     updateDimensions: updateDimensions,
@@ -42,7 +45,8 @@ export default {
     getBreakpoints: getBreakpoints,
     updateBreakpoints: updateBreakpoints,
     updateBreakpointClasses: updateBreakpointClasses,
-    updateSvg: updateSvg
+    updateSvg: updateSvg,
+    resetG: resetG
   },
   defaults: {
     width: 600,
@@ -60,6 +64,8 @@ export default {
     showYLabel: true,
     xCol: 'x',
     yCol: 'y',
+    xTransform: d => Number(d),
+    yTransform: d => Number(d),
     xScaleNice: true,
     yScaleNice: true,
     responsive: true,
@@ -68,7 +74,7 @@ export default {
     yTicks: 10,
     color: d3.schemeCategory10,
     filter: false,
-    drawExtra: c => undefined,
+    drawExtra: c => {},
     breakpoints: {
       small: 480,
       medium: 768,

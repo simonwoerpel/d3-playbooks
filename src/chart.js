@@ -1,28 +1,21 @@
 import setupPlaybook from './playbooks/generate.js'
-import template from './playbooks/template.js'
-import playbooks from './charts/available_charts.js'
 
-export default opts => {
+export default ({opts, template, plays}) => {
   const chart = () => {}
-  const playbook = playbooks[opts.kind]
-
-  // merge opts with defaults
-  const settings = playbook.get('defaults').mergeDeep(opts).toJS()
 
   // the main object that will hold
   // information and might change over time
   const C = {}
 
   // set playbook funcs as properties for this chart.
-  // they could be overwritten via the settings merge below
-  for (let [name, attr] of playbook.get('plays')) {
+  // they could be overwritten via the opts merge below
+  for (let [name, attr] of plays) {
     C[name] = attr
   }
 
-  // settings and getter / setter methods for these
-  Object.keys(settings).map(name => {
-    C[name] = settings[name]
-    // chart[name] = function(val) {
+  // opts and getter / setter methods for these
+  Object.keys(opts).map(name => {
+    C[name] = opts[name]
     chart[name] = (...val) => {
       if (val.length === 1) {
         C[name] = val[0]
@@ -31,24 +24,19 @@ export default opts => {
     }
   })
 
-  setupPlaybook({template, C})
+  setupPlaybook(template, C)
 
   // this should be invoked from "outside"
   chart.build = () => {
     C.init()
-    C.data.then(d => {
-      C.data = d
-      // FIXME
-      if (C.multiData) {
-        C.multiData.then(d => {
-          C.multiData = d
-          C.render()
-        })
-      } else C.render()
+    C.rawData.then(d => {
+      C.rawData = d
+      C.render()
     })
   }
 
   // public methods
+  // FIXME / TODO handle Promise
   chart.render = C.render
 
   return chart

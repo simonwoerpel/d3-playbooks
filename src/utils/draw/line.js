@@ -13,7 +13,7 @@ export default ({
     .y(d => yScale(d[yCol]))
 
   if (curve) {
-    line.curve(d3.curveNatural)
+    line.curve(curve)
   }
 
   return g.append('path')

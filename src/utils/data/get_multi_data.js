@@ -10,10 +10,8 @@ export default ({
   xCol,
   yCols
 }) => {
-  return new Promise(r => {
-    data.then(data => r({
-      xValues: data.map(r => r[xCol]),
-      yValues: yCols.map(c => data.map(r => r[c]))
-    }))
-  })
+  return {
+    xValues: data.map(r => r[xCol]),
+    yValues: yCols.map(c => data.map(r => r[c]))
+  }
 }

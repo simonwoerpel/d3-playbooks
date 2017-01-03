@@ -1,9 +1,9 @@
-const {axisLeft, axisRight, axisTop, axisBottom} = d3
+// const {axisLeft, axisRight, axisTop, axisBottom} = d3
 const axes = {
-  axisTop,
-  axisBottom,
-  axisRight,
-  axisLeft
+  axisTop: d3.axisTop,
+  axisBottom: d3.axisBottom,
+  axisRight: d3.axisRight,
+  axisLeft: d3.axisLeft
 }
 
 export default function({
