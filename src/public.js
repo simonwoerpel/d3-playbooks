@@ -45,6 +45,6 @@ d3.playbooks.addChart = (name, {defaults, plays}) => {
 }
 
 // add concrete chart types
-Object.keys(charts).map(name => {
+for (let name in charts) {
   d3.playbooks.addChart(name, charts[name])
-})
+}
