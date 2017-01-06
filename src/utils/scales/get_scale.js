@@ -13,11 +13,13 @@ export default function({
   xDomain,
   yDomain,
   xScaleNice,
-  yScaleNice
+  yScaleNice,
+  xRange,
+  yRange
 }) {
   const _scale = scales[this.kind] || d3.scaleLinear
   const _y = this.axis === 'y'
-  const range = _y ? [height, 0] : [0, width]
+  const range = _y ? yRange || [height, 0] : xRange || [0, width]
   const domain = _y ? yDomain : xDomain
   const nice = _y ? yScaleNice : xScaleNice
   const scale = _scale()
