@@ -12,7 +12,7 @@ export default {
   },
   defaults:  {
     yTransform: d => d,
-    barMargin: 0,
-    barWidth: false
+    barMargin: 2,
+    color: 'steelblue'
   }
 }

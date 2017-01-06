@@ -10,5 +10,6 @@ export default {
   defaults: {
     sizeRange: [3, 8],
     size: 6,
+    color: 'steelblue'
   }
 }
