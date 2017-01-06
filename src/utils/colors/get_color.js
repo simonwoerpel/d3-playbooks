@@ -10,21 +10,22 @@ import '../polyfills/is_array.js'
 **/
 export default ({
   color,
-  groupCol
+  groupCol,
+  xCol
 }) => {
 
   if (typeof color === 'string') return () => color
 
   else if (Array.isArray(color)) {
     const _getColor = d3.scaleOrdinal(color)
-    return d => _getColor(d[groupCol] || d)
+    return d => _getColor(d[groupCol] || d[xCol] || d.index || d)
   }
 
   else if (color.constructor === Object) {
     if (!groupCol) {
       throw new Error('need groupCol for this color func')
     }
-    return d => color[d[groupCol]]
+    return d => color[d[groupCol] || d[xCol]]
   }
 
   else if (typeof color === 'function') return color
