@@ -53,4 +53,15 @@ export default () => {
     dataUrl: 'data/multitimeline.csv',
     yCols: ['count_clinton', 'count_trump']
   }).build()
+
+  d3.playbooks.gaugeChart({
+    data: [
+      {x: 'CDU', y: 32.7},
+      {x: 'SPD', y: 42.3},
+      {x: 'Bündnis 90/Grüne', y: 9.3},
+      {x: 'FDP', y: 4.8},
+      {x: 'Die Linke', y: 2.6},
+      {x: 'Piraten', y: 7.9}
+    ]
+  }).build()
 }

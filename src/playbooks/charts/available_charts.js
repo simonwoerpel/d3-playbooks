@@ -6,6 +6,7 @@ import lineChart from './line_chart.js'
 import multiLineChart from './multiline_chart.js'
 import timeLineChart from './timeline_chart.js'
 import multiTimeLineChart from './multitimeline_chart.js'
+import gaugeChart from './gauge_chart.js'
 
 export default {
   baseChart,
@@ -15,5 +16,6 @@ export default {
   lineChart,
   multiLineChart,
   timeLineChart,
-  multiTimeLineChart
+  multiTimeLineChart,
+  gaugeChart
 }
