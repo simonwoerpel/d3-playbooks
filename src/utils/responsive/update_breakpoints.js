@@ -9,8 +9,12 @@ export default chart => {
   const inactiveClasses = chart.breakpoints
     .filter(b => b.name !== activeClass).map(b => _(b.name))
 
-  // some convenient shorthands for breakpoints
+  // shorthand properties for breakpoints
   chart.breakpoints.map(b => chart['is_' + b.name] = b.name === active)
+
+  // run computations for active breakpoint
+  const func = chart['on_' + active]
+  func ? func(chart) : null
 
   chart.breakpoint = {
     active,
