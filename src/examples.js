@@ -17,42 +17,49 @@ export default () => {
 
 
   // render some base examples
-  d3.playbooks.barChart({
-    dataUrl: 'data/bar.csv'
-  }).build()
+  const chart = d3.playbooks.barChart({
+    dataUrl: 'data/bar.csv',
+    on_small: c => {
+      c.containerHeight = 550,
+      c.height = 500
+    }
+  })
+
+  chart.render()
+
 
   d3.playbooks.horizontalBarChart({
-    dataUrl: 'data/bar.csv',
     data: [
       ['1', 3, '2'],
       ['a', 'b', 'c']
-    ]
-  }).build()
+    ],
+    responsiveSvg: true
+  }).render()
 
   d3.playbooks.lineChart({
     dataUrl: 'data/line.csv'
-  }).build()
+  }).render()
 
   d3.playbooks.scatterChart({
     data: {
       x: [1, 2, 3, 4, 6],
       y: [2, 5, 1, 1, 8]
     }
-  }).build()
+  }).render()
 
   d3.playbooks.timeLineChart({
     dataUrl: 'data/timeline.csv'
-  }).build()
+  }).render()
 
   d3.playbooks.multiLineChart({
     dataUrl: 'data/multiline.csv',
     yCols: ['y1', 'y2', 'y3']
-  }).build()
+  }).render()
 
   d3.playbooks.multiTimeLineChart({
     dataUrl: 'data/multitimeline.csv',
     yCols: ['count_clinton', 'count_trump']
-  }).build()
+  }).render()
 
   d3.playbooks.gaugeChart({
     data: [
@@ -63,5 +70,5 @@ export default () => {
       {x: 'Die Linke', y: 2.6},
       {x: 'Piraten', y: 7.9}
     ]
-  }).build()
+  }).render()
 }
