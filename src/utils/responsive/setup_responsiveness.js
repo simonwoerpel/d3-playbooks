@@ -1,5 +1,5 @@
 export default chart => {
-  if (chart.responsive) {
+  if (chart.responsive && !chart.responsiveSvg) {
 
     const {
       width,

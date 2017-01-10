@@ -7,6 +7,7 @@ export default function({
   height,
   width,
   responsive,
+  responsiveSvg,
   xTicks,
   yTicks,
   _getXTicks,
@@ -19,7 +20,7 @@ export default function({
     const _axis = _y ? yAxis : xAxis
 
     let ticks
-    if (responsive) {
+    if (responsive && !responsiveSvg) {
       // adjust ticks to responsiveness
       ticks = _y ? _getYTicks(width) : _getXTicks(width)
     } else {

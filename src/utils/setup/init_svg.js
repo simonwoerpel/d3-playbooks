@@ -2,6 +2,9 @@
 // @return svg as wrapper svg element (use for resizing if responsive)
 export default ({
   element,
+  width,
+  height,
+  margin,
   containerWidth,
   containerHeight,
   responsiveSvg,
@@ -10,18 +13,19 @@ export default ({
   const svg = element.append('svg')
 
   if (responsiveSvg) {
+    const {top, right, bottom, left} = margin
+    const viewBox = width + left + right + ' ' + (height + top + bottom)
     svg
       //responsive SVG needs these 2 attributes and no width and height attr
       .attr('preserveAspectRatio', 'xMinYMin meet')
-      .attr('viewBox', '0 0 ' + containerWidth + ' ' + containerHeight)
+      .attr('viewBox', '0 0 ' + viewBox)
       //class to make it responsive
-      .classed('svg-content-responsive', true)
+      .attr('class', 'svg-content-responsive')
     element.classed('svg-container-responsive', true)
   } else {
     svg
       .attr('width', containerWidth)
       .attr('height', containerHeight)
-      .attr('class', cssNamespace + '__svg')
   }
-  return svg
+  return svg.classed(cssNamespace + '__svg', true)
 }
