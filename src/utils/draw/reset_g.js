@@ -5,6 +5,5 @@ export default ({
   margin
 }) => {
   g.selectAll('*').remove()
-  g.append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+  g.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 }
