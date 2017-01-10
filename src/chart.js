@@ -1,5 +1,7 @@
 import setupPlaybook from './playbooks/generate.js'
 
+const PUBLICS = ['render', 'resize', 'update']
+
 export default ({opts, template, plays}) => {
   const chart = () => {}
 
@@ -13,12 +15,12 @@ export default ({opts, template, plays}) => {
     C[name] = attr
   }
 
-  // opts and getter / setter methods for these
+  // opts and getter / setter methods
   Object.keys(opts).map(name => {
     C[name] = opts[name]
     chart[name] = (...val) => {
       if (val.length === 1) {
-        C[name] = val[0]
+        C.ready.then(() => C[name] = val[0])
         return chart
       } else return C[name]
     }
@@ -26,18 +28,21 @@ export default ({opts, template, plays}) => {
 
   setupPlaybook(template, C)
 
-  // this should be invoked from "outside"
-  chart.build = () => {
-    C.init()
-    C.rawData.then(d => {
-      C.rawData = d
-      C.render()
-    })
-  }
+  C.init()
+
+  // load async data
+  C.rawData.then(d => C.rawData = d)
+
+  // convenience
+  C.ready = C.rawData
 
   // public methods
-  // FIXME / TODO handle Promise
-  chart.render = C.render
+  PUBLICS.map(func => {
+    chart[func] = () => {
+      C.ready.then(() => C[func]())
+      return chart
+    }
+  })
 
   return chart
 }

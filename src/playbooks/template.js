@@ -12,9 +12,11 @@ export default _({
     svg: 'initSvg',
     g: 'initG'
   }),
-  setup: _({
+  setupData: _({
     data: 'prepareData',
     multiData: 'getMultiData',  // FIXME
+  }),
+  setup: _({
     getColor: 'getColorFunc',
     getSize: 'getSizeFunc',
     xDomain: 'getXDomain',
@@ -35,6 +37,7 @@ export default _({
     extraDrawedSelections: 'drawExtra'
   }),
   render: [
+    'setupData',
     'setup',
     'prepareDraw',
     'draw'
@@ -42,6 +45,13 @@ export default _({
   resize: [
     'updateBreakpoints',
     'updateBreakpointClasses',
+    'updateSvg',
+    'resetG',
+    'prepareDraw',
+    'draw'
+  ],
+  update: [
+    'setup',
     'updateSvg',
     'resetG',
     'prepareDraw',
