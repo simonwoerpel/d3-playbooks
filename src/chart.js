@@ -31,9 +31,6 @@ export default ({opts, template, plays}) => {
   // load async data
   C.rawData.then(d => C.rawData = d)
 
-  // convenience
-  C.ready = C.rawData
-
   // public methods
   d3.playbooks.PUBLIC_METHODS.map(func => {
     chart[func] = () => {

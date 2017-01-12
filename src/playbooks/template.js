@@ -3,6 +3,7 @@ import {OrderedMap as _} from 'immutable'
 export default _({
   init: _({
     rawData: 'getData',
+    ready: 'getReady',
     element: 'getChartElement',
     _responsive: 'setUpResponsiveness',
     _updateDimensions: 'updateDimensions',

@@ -1,4 +1,5 @@
 import getData from '../../utils/data/loader.js'
+import getReady from '../../utils/setup/get_ready.js'
 import prepareData from '../../utils/data/prepare.js'
 import getChartElement from '../../utils/setup/get_chart_element.js'
 import fixDimensions from '../../utils/setup/fix_dimensions.js'
@@ -22,6 +23,7 @@ import updateBreakpointClasses from '../../utils/responsive/update_breakpoint_cl
 export default {
   plays: {
     getData,
+    getReady,
     prepareData,
     getMultiData: () => {},  // FIXME
     getChartElement,
