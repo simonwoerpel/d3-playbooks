@@ -1,7 +1,5 @@
 import setupPlaybook from './playbooks/generate.js'
 
-const PUBLICS = ['render', 'resize', 'update']
-
 export default ({opts, template, plays}) => {
   const chart = () => {}
 
@@ -37,7 +35,7 @@ export default ({opts, template, plays}) => {
   C.ready = C.rawData
 
   // public methods
-  PUBLICS.map(func => {
+  d3.playbooks.PUBLIC_METHODS.map(func => {
     chart[func] = () => {
       C.ready.then(() => C[func]())
       return chart

@@ -3,6 +3,7 @@
  */
 import {fromJS as _} from 'immutable'
 import baseTemplate from './playbooks/template.js'
+import publics from './playbooks/publics.js'
 import charts from './playbooks/charts/available_charts.js'
 import chart from './chart.js'
 
@@ -10,6 +11,7 @@ import chart from './chart.js'
 d3.playbooks = {}
 d3.playbooks.TEMPLATE = baseTemplate
 d3.playbooks.CHARTS = charts
+d3.playbooks.PUBLIC_METHODS = publics
 
 const overrides = {}
 
