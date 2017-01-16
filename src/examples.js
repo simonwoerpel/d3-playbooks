@@ -19,6 +19,7 @@ export default () => {
   // render some base examples
   const chart = d3.playbooks.barChart({
     dataUrl: 'data/bar.csv',
+    yTickFormat: d => d/10 + ' %',
     on_small: c => {
       c.containerHeight = 550,
       c.height = 500
@@ -58,7 +59,8 @@ export default () => {
 
   d3.playbooks.multiTimeLineChart({
     dataUrl: 'data/multitimeline.csv',
-    yCols: ['count_clinton', 'count_trump']
+    yCols: ['count_clinton', 'count_trump'],
+    yTickFormat: d => d/1000 + 'k'
   }).render()
 
   d3.playbooks.gaugeChart({
