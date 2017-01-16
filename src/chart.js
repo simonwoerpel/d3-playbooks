@@ -33,8 +33,8 @@ export default ({opts, template, plays}) => {
 
   // public methods
   d3.playbooks.PUBLIC_METHODS.map(func => {
-    chart[func] = () => {
-      C.ready.then(() => C[func]())
+    chart[func] = opts => {
+      C.ready.then(() => C[func](opts))
       return chart
     }
   })
