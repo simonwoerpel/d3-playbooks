@@ -1,6 +1,8 @@
-import './less/main.less'
-import './polyfills/is_array.js'
-import './stores/chart_store.js'
-import renderChart from './render_chart'
+import './style/main.scss'
+import './public.js'
+import renderExamples from './examples.js'
 
-window.renderChart = renderChart
+if (process.env.NODE_ENV == 'development') {
+  window.d3 = d3
+  renderExamples()
+}

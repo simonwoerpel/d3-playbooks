@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
 npm run build
-cp -r ./dist /tmp/
-cp -r ./data /tmp/
-cp ./index.html /tmp/
-rm -rf ./dist
+cp ./dist/d3-playbooks.base.min.js /tmp/
 git checkout gh-pages
 rm -rf ./dist
-rm -rf ./data
-mv /tmp/dist .
-mv /tmp/data .
-mv /tmp/index.html .
+mv /tmp/d3-playbooks.base.min.js ./lib/
+rm -rf /tmp/d3-playbooks.base.min.js
 git status
+python3 -m http.server
