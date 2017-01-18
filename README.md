@@ -4,16 +4,34 @@ see documentation at https://github.com/simonwoerpel/d3-playbooks-maps to get th
 
 checkout repo, `npm install` and then `npm run dev` to see examples at `http://localhost:1337`.
 
+## quickstart
+
+```javascript
+d3.playbooks.barChart({
+  dataUrl: './data.csv'
+}).render()
+```
+
+### dependencies
+
+required:
+
+- recent version (>=4) of d3.
+
+```html
+<script src="https://d3js.org/d3.v4.min.js"></script>
+```
+
 ## available charts
 
-`d3.playbooks.barChart`
-`d3.playbooks.horizontalBarChart`
-`d3.playbooks.lineChart`
-`d3.playbooks.timeLineChart`
-`d3.playbooks.multiLineChart`
-`d3.playbooks.multiTimeLineChart`
-`d3.playbooks.scatterChart`
-`d3.playbooks.gaugeChart`
+- `d3.playbooks.barChart`
+- `d3.playbooks.horizontalBarChart`
+- `d3.playbooks.lineChart`
+- `d3.playbooks.timeLineChart`
+- `d3.playbooks.multiLineChart`
+- `d3.playbooks.multiTimeLineChart`
+- `d3.playbooks.scatterChart`
+- `d3.playbooks.gaugeChart`
 
 ## examples
 
