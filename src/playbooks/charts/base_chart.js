@@ -81,6 +81,11 @@ export default {
       small: 480,
       medium: 768,
       large: 1280
-    }
+    },
+
+    // to have this also public:
+    ready: false,
+    data: null,
+    element: null
   }
 }
