@@ -63,14 +63,20 @@ export default () => {
     yTickFormat: d => d/1000 + 'k'
   }).render()
 
-  d3.playbooks.gaugeChart({
-    data: [
-      {x: 'CDU', y: 32.7},
-      {x: 'SPD', y: 42.3},
-      {x: 'Bündnis 90/Grüne', y: 9.3},
-      {x: 'FDP', y: 4.8},
-      {x: 'Die Linke', y: 2.6},
-      {x: 'Piraten', y: 7.9}
-    ]
+  const donutData = [
+    {x: 'CDU', y: 32.7},
+    {x: 'SPD', y: 42.3},
+    {x: 'Bündnis 90/Grüne', y: 9.3},
+    {x: 'FDP', y: 4.8},
+    {x: 'Die Linke', y: 2.6},
+    {x: 'Piraten', y: 7.9}
+  ]
+
+  d3.playbooks.donutChart({
+    data: donutData
+  }).render()
+
+  d3.playbooks.semiDonutChart({
+    data: donutData
   }).render()
 }
