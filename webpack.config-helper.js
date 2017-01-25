@@ -47,8 +47,7 @@ module.exports = options => {
 
     // external dependencies
     webpackConfig.externals = {
-      d3: 'd3',
-      Papa: 'papaparse'
+      d3: 'd3'
     }
 
     webpackConfig.plugins.push(
