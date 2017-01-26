@@ -49,7 +49,6 @@
     "eslint-plugin-es6-recommended": "^0.1.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.26.0",
-    "immutable": "^3.8.1",
     "node-sass": "^4.3.0",
     "promise-polyfill": "^6.0.2",
     "rollup": "^0.41.4",

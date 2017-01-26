@@ -9,12 +9,12 @@ export default ({opts, template, plays}) => {
 
   // set playbook funcs as properties for this chart.
   // they could be overwritten via the opts merge below
-  for (let [name, attr] of plays) {
-    C[name] = attr
+  for (let name in plays) {
+    C[name] = plays[name]
   }
 
   // opts and getter / setter methods
-  Object.keys(opts).map(name => {
+  for (let name in opts) {
     C[name] = opts[name]
     chart[name] = (...val) => {
       if (val.length === 1) {
@@ -22,7 +22,7 @@ export default ({opts, template, plays}) => {
         return chart
       } else return C[name]
     }
-  })
+  }
 
   setupPlaybook(template, C)
 

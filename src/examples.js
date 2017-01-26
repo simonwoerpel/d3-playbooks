@@ -1,19 +1,15 @@
 export default () => {
   // example how to add new functionality to this library
+  // see `./playbooks/template.js`
 
-  // 1. create a function
+  // 1. create a function to log width of chart
   d3.playbooks.CHARTS.baseChart.plays.logWidth = C => console.log('width:', C.width)
 
   // 2. add new function block to playbook template
-  // `d3.playbooks.TEMPLATE` is an `Immutable`: https://facebook.github.io/immutable-js/docs/#/OrderedMap
-  const updatedTemplate = d3.playbooks.TEMPLATE
-    .mergeDeep({logger: {_width: 'logWidth'}})
+  d3.playbooks.TEMPLATE.logger = {_width: 'logWidth'}
 
   // 3. add this function block to the `resize` handler
-    .updateIn(['resize'], val => val.concat(['logger']))
-
-  // 4. set new template as default `TEMPLATE`
-  d3.playbooks.TEMPLATE = updatedTemplate
+  d3.playbooks.TEMPLATE.resize.push('logger')
 
 
   // render some base examples
