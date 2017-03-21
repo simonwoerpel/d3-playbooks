@@ -1,6 +1,7 @@
 export default ({
   width,
   height,
+  margin,
   data,
   xCol,
   yCol,
@@ -11,24 +12,28 @@ export default ({
   arcWidth,
   arcPadding,
   pie,
+  arc,
   getRadius,
   getTranslate
 }) => {
 
   const radius = getRadius(width, height)
 
-  const arc = d3.arc()
-      .outerRadius(radius)
+  arc.outerRadius(radius)
       .innerRadius(radius - radius * arcWidth)
       .padAngle(arcPadding)
 
-  const arcs = pie(data.map(d => yScale(d[yCol])))
+  pie.value(d => yScale(d[yCol]))
+  const arcs = pie(data)
 
+  const {top, left} = margin
   const [x, y] = getTranslate(width, height)
-  return g.attr('transform', 'translate(' + x + ',' + y + ')')
+  return g.attr('transform', 'translate(' + (x + left) + ',' + (y + top) + ')')
     .selectAll('.arc')
       .data(arcs)
-    .enter().append('path')
+    .enter().append('g')
+      .attr('class', 'arc-wrapper')
+    .append('path')
       .attr('class', 'arc')
       .attr('d', arc)
       .style('fill', d => getColor(d))

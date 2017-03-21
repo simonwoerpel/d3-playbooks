@@ -28,6 +28,7 @@ export default {
     arcWidth: 0.6,
     arcPadding: 0.02,
     pie: d3.pie(),
+    arc: d3.arc(),
     getRadius: (width, height) => Math.min(width, height) / 2,
     getTranslate: (width, height) => [width / 2, height / 2]
   }
